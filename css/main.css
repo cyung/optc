@@ -1,0 +1,20 @@
+.jumbotron {
+  background: #fff; }
+  .jumbotron h1, .jumbotron h2 {
+    font-family: Roboto, cursive; }
+  .jumbotron p {
+    font-size: 16px;
+    font-family: Lora,sans-serif;
+    margin: 0; }
+  .jumbotron span {
+    font-size: 16px;
+    font-family: Lora,sans-serif;
+    display: inline-block; }
+
+.id {
+  padding-bottom: 10px; }
+
+.container {
+  text-align: center; }
+
+/*# sourceMappingURL=main.css.map */
