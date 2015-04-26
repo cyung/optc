@@ -3,13 +3,10 @@
   .jumbotron h1, .jumbotron h2 {
     font-family: Roboto, cursive; }
   .jumbotron p {
-    font-size: 16px;
     font-family: Lora,sans-serif;
     margin: 0; }
   .jumbotron span {
-    font-size: 16px;
-    font-family: Lora,sans-serif;
-    display: inline-block; }
+    font-family: Lora,sans-serif; }
 
 .id {
   padding-bottom: 10px; }
