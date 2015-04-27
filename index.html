@@ -15,8 +15,8 @@
 		<div class="jumbotron">
 			<div class="container" ng-app="app">
 				<h1>Turtle Time Calculator</h1>
-				<h2>April 27, 2015</h2>
 				<div ng-controller="TimeCtrl as time">
+					<h2>{{time.getDate()}}</h2>
 					<div class="id">
 						<span>6th ID digit: </span>
 						<input type="number" min="0" max="9" ng-model="id">
