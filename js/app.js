@@ -3,7 +3,10 @@ angular.module('app', []);
 angular.module('app')
 	.controller('TimeCtrl', function(){
 		var self = this;
-		self.id_order = [0,1,2,3,4,5];
+		self.weekly_order = [0,1,2,3,4];
+		// self.weekly_order = [1,2,3,4,0]; // id=4 is the first time
+
+		self.timezone = jstz.determine().name();
 
 		self.turtle = function turtle (id, second_time) {
 			var ttime = moment.utc("2015-04-27 13:00");
@@ -18,7 +21,7 @@ angular.module('app')
 			if (id>4)
 				id -=5;
 
-			my_ttime.add(id*2, 'hours');
+			my_ttime.add(self.weekly_order[id]*2, 'hours');
 
 			return printTime(my_ttime);
 		};
