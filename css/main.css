@@ -7,6 +7,8 @@
     margin: 0; }
   .jumbotron span {
     font-family: Lora,sans-serif; }
+  .jumbotron input[type="checkbox"] {
+    margin-left: 20px; }
 
 .id {
   padding-bottom: 10px; }

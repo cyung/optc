@@ -20,6 +20,7 @@
 					<div class="id">
 						<span>6th ID digit: </span>
 						<input type="number" min="0" max="9" ng-model="id">
+						<input type="checkbox" name="militaryTime" ng-model="time.military"> 24hr format
 					</div>
 					<p>First time {{time.turtle(id, false)}}</p>
 					<p>Second time {{time.turtle(id, true)}}</p>
