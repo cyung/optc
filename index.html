@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/main.css">
-		<link href='http://fonts.googleapis.com/css?family=Poiret+One|Roboto|Lora|Lobster' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Roboto|Lora' rel='stylesheet' type='text/css'>
 	</head>
 
 	<body>
@@ -16,15 +16,19 @@
 			<div class="container" ng-app="app">
 				<h1>Turtle Time Calculator</h1>
 				<div ng-controller="TimeCtrl as time">
-					<h2>{{time.getDate()}}</h2>
 					<div class="id">
 						<span>6th ID digit: </span>
 						<input type="number" min="0" max="9" ng-model="id">
 						<input type="checkbox" name="militaryTime" ng-model="time.military"> 24hr format
 					</div>
-					<p>First time {{time.turtle(id, false)}}</p>
-					<p>Second time {{time.turtle(id, true)}}</p>
 					<p>Your time zone: {{time.timezone}}</p>
+					<h2>{{time.getDate(false)}}</h2>
+					<p>First time {{time.turtle(id, false, false)}}</p>
+					<p>Second time {{time.turtle(id, true, false)}}</p>
+					<h2 class="next_week">{{time.getDate(true)}}</h2>
+					<p>First time {{time.turtle(id, false, true)}}</p>
+					<p>Second time {{time.turtle(id, true, true)}}</p>
+					
 				</div>
 			</div>
 		</div>
