@@ -18,17 +18,22 @@
 				<div ng-controller="TimeCtrl as time">
 					<div class="id">
 						<span>6th ID digit: </span>
-						<input type="number" min="0" max="9" ng-model="id">
+						<input type="number" min="0" max="9" ng-model="time.my_id">
 						<input type="checkbox" name="militaryTime" ng-model="time.military"> 24hr format
 					</div>
 					<p>Your time zone: {{time.timezone}}</p>
-					<h2>{{time.getDate(false)}}</h2>
-					<p>First time {{time.turtle(id, false, false)}}</p>
-					<p>Second time {{time.turtle(id, true, false)}}</p>
-					<h2 class="next_week">{{time.getDate(true)}}</h2>
-					<p>First time {{time.turtle(id, false, true)}}</p>
-					<p>Second time {{time.turtle(id, true, true)}}</p>
-					
+					<turtle-day 
+						military='time.military'
+						index="{{$index}}"
+						turtle="time.turtle"
+						print-time="time.printTime"
+						my-id='time.my_id'
+						my-time='time.my_time'
+						ng-repeat="t in time.range(3) track by $index"
+						ng-class="{'hidden': !$first && !time.see_more}"
+						>
+					</turtle-day>
+					<button type="button" class="btn btn-info see-more" ng-click="time.see_more=true" ng-class="{'hidden': time.see_more}">See More</button>
 				</div>
 			</div>
 		</div>
@@ -37,6 +42,7 @@
 		<script src="js/moment-timezone-with-data-2010-2020.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js"></script>
 		<script src="js/app.js"></script>
+		<script src="js/turtleDirective.js"></script>
 	</body>
 
 </html>
