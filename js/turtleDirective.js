@@ -32,4 +32,21 @@ angular.module('app')
 				}
 			}
 		};
+	}])
+	.directive('selectOnClick', [function () {
+		return {
+			restrict: 'A',
+			link: function (scope, elem, attrs) {
+				var focused;
+				elem.on('click', function() {
+					if (focused != this) {
+						this.select();
+						focused = this;
+					}
+				});
+				elem.on('blur', function() {
+					focused = null;
+				});
+			}
+		};
 	}]);

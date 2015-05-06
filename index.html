@@ -28,7 +28,7 @@
 				<div ng-controller="TimeCtrl as time">
 					<div class="id">
 						<span>6th ID digit: </span>
-						<input type="number" min="0" max="9" ng-model="time.my_id">
+						<input type="number" min="0" max="9" ng-model="time.my_id" class="input-id" select-on-click>
 						<input type="checkbox" name="militaryTime" ng-model="time.military"> 24hr format
 					</div>
 					<p>Your time zone: {{time.timezone}}</p>
