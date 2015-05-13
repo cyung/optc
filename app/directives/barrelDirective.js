@@ -39,7 +39,7 @@ angular.module('barrelApp')
 				var day = moment().utc().startOf('day').add(12,'hours');
 				var now = moment();
 				if (day.isBefore(now))
-					day.subtract(1, 'days');
+					day.add(1, 'days');
 				html = '<timer end-time="' + day + '">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>';
 				return html;
 			},
