@@ -5,7 +5,7 @@ angular.module('barrelApp')
 
 		var day = moment().utc().startOf('day').add(12,'hours');
 		var now = moment();
-		if (day.isBefore(now))
+		if (day.isAfter(now))
 			day.subtract(1, 'days');
 
 		self.day_num = day.dayOfYear();
