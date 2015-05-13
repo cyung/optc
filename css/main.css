@@ -1,5 +1,7 @@
 .jumbotron {
-  background: #fff; }
+  background: #fff;
+  padding-top: 0;
+  margin-top: -20px; }
   .jumbotron h1, .jumbotron h2 {
     font-family: Roboto, cursive; }
   .jumbotron p {
@@ -24,5 +26,8 @@
 
 .input-id {
   width: 50px; }
+
+.navbar-nav.nav-justified > li {
+  float: none; }
 
 /*# sourceMappingURL=main.css.map */

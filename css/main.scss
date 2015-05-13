@@ -1,5 +1,7 @@
 .jumbotron {
 	background: #fff;
+	padding-top: 0;
+	margin-top: -20px;
 	h1, h2 {
 		font-family: Roboto, cursive;
 	}
@@ -33,4 +35,8 @@
 
 .input-id {
 	width: 50px;
+}
+
+.navbar-nav.nav-justified > li {
+	float: none;
 }
