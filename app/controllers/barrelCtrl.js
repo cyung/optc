@@ -8,7 +8,10 @@ angular.module('barrelApp')
 		if (day.isAfter(now))
 			day.subtract(1, 'days');
 
+		self.day_num = day.dayOfYear();
+		console.log(self.day_num);
 		self.day = day.clone().add(1, 'days').format('x');
+		
 		self.range = function(num) {
 			return new Array(num);
 		};

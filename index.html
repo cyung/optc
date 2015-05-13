@@ -52,10 +52,10 @@
 					</div>
 					<p>Your time zone: {{turtle.timezone}}</p>
 					<turtle-day 
-						military='military'
-						index='$index'
-						my-id='id'
-						my-time='turtle.my_time'
+						military="military"
+						index="$index"
+						my-id="id"
+						my-time="turtle.my_time"
 						ng-repeat="t in turtle.range(3) track by $index"
 						ng-class="{'hidden': !$first && !turtle.see_more}"
 						>

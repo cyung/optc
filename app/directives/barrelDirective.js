@@ -3,7 +3,8 @@ angular.module('barrelApp')
 		return {
 			restrict: 'AE',
 			scope: {
-				index: '@'
+				index: '@',
+				dayNum: '='
 			},
 			template: '<div><h2>{{date}}</h2><p>Wooden {{chest_wooden}}</p><p>Silver {{chest_silver}}</p><p>Gold {{chest_gold}}</p>',
 			link: function (scope, elem, attrs) {
@@ -11,8 +12,11 @@ angular.module('barrelApp')
 				var silver = [1,6,2,7,0,5,1,6,0,5,4,9,3,8,4,9,2,7,3,8];
 				var gold   = [3,8,2,7,1,6,0,5,4,9];
 
-				var start1 = (scope.index*4+4) % 20;
-				var start2 = (scope.index*2+2) % 10;
+				var offset = parseInt(scope.index) + scope.dayNum;
+				offset += 4;
+
+				var start1 = (offset*4) % 20;
+				var start2 = (offset*2) % 10;
 
 				scope.chest_wooden = wooden.slice(start1, start1+4);
 				scope.chest_silver = silver.slice(start1, start1+4);

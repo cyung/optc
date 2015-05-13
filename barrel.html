@@ -51,6 +51,7 @@
 					</h2>
 					<chest-type 
 						index="{{$index}}"
+						day-num="barrel.day_num"
 						ng-repeat="t in barrel.range(5) track by $index"
 						ng-class="{'hidden': !$first && !barrel.see_more}"
 						>
