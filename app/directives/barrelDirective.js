@@ -11,8 +11,8 @@ angular.module('barrelApp')
 				var silver = [1,6,2,7,0,5,1,6,0,5,4,9,3,8,4,9,2,7,3,8];
 				var gold   = [3,8,2,7,1,6,0,5,4,9];
 
-				var start1 = (scope.index*4) % 20;
-				var start2 = (scope.index*2) % 10;
+				var start1 = (scope.index*4+4) % 20;
+				var start2 = (scope.index*2+2) % 10;
 
 				scope.chest_wooden = wooden.slice(start1, start1+4);
 				scope.chest_silver = silver.slice(start1, start1+4);
