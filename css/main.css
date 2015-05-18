@@ -37,7 +37,11 @@
   .turtle-day p span {
     margin-right: 40px; }
 
-th {
-  text-align: center; }
+table {
+  margin-top: 20px !important;
+  max-width: 600px !important;
+  margin: auto; }
+  table th {
+    text-align: center; }
 
 /*# sourceMappingURL=main.css.map */
