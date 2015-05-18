@@ -38,9 +38,6 @@ angular.module('turtleApp')
 					scope.date2 = ttime2.format('MMMM Do, YYYY');
 					scope.ttime1_format = print_time(ttime1, scope.military);
 					scope.ttime2_format = print_time(ttime2, scope.military);
-					console.log(scope.military);
-					console.log(scope.ttime1_format);
-
 				}
 
 				function calc_time(id, second_time) {

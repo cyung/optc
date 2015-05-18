@@ -50,16 +50,23 @@
 						<div id="timer"></div>
 						<barrel-time day="barrel.day"></barrel-time>
 					</h2>
-					<chest-type 
+				<table ng-table class="table table-bordered table-striped">
+					<tr ng-repeat="day in barrel.times">
+						<td data-title="'Date'">{{day.date}}</td>
+						<td data-title="'Wooden'">{{day.wooden}}</td>
+						<td data-title="'Silver'">{{day.silver}}</td>
+						<td data-title="'Gold'">{{day.gold}}</td>
+					</tr>
+				</table>
+<!-- 					<chest-type 
 						index="{{$index}}"
 						day-num="barrel.day_num"
 						ng-repeat="t in barrel.range(5) track by $index"
 						ng-class="{'hidden': $index>1 && !barrel.see_more}"
 						>
 					</chest-type>
-					<button type="button" class="btn btn-info see-more" ng-click="barrel.see_more=true" ng-class="{'hidden': barrel.see_more}">See More</button>
+					<button type="button" class="btn btn-info see-more" ng-click="barrel.see_more=true" ng-class="{'hidden': barrel.see_more}">See More</button> -->
 				</div>
-
 			</div>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
@@ -69,9 +76,10 @@
 		<script src="app/lib/moment.min.js"></script>
 		<script src="app/lib/angular-timer.min.js"></script>
 		<script src="app/lib/humanize-duration.js"></script>
+		<script src="app/lib/ng-table.min.js"></script>
 		<script src="app/app.js"></script>
 		<script src="app/controllers/barrelCtrl.js"></script>
-		<script src="app/directives/barrelDirective.js"></script>
+<!-- 		<script src="app/directives/barrelDirective.js"></script> -->
 	</body>
 
 </html>
