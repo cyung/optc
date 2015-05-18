@@ -46,12 +46,9 @@ angular.module('turtleApp')
 					if (id>4)
 						id -=5;
 
-					// console.log(ttime.clone().local().format('YYYY-MM-dd HH:mm'));
 					ttime.add(weekly_order[id]*2, 'hours');
 					if (second_time)
 						ttime.add(10,'hours');
-					console.log('index = ', day_num);
-					console.log(ttime.clone().local().format('YYYY-MM-dd HH:mm'));
 					return ttime;
 				}
 
