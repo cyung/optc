@@ -57,8 +57,8 @@
 						index="$index"
 						my-id="id"
 						my-time="turtle.my_time"
-						ng-repeat="t in turtle.range(3) track by $index"
-						ng-class="{'hidden': !$first && !turtle.see_more}"
+						ng-repeat="t in turtle.range(5) track by $index"
+						ng-class="{'hidden': $index>1 && !turtle.see_more}"
 						>
 					</turtle-day>
 					<button type="button" class="btn btn-info see-more" ng-click="turtle.see_more=true" ng-class="{'hidden': turtle.see_more}">See More</button>

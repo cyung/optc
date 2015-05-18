@@ -8,7 +8,7 @@ angular.module('turtleApp')
 				my_id: '=myId',
 				my_time: '=myTime'
 			},
-			template: '<div><h2>{{date}}</h2><p>First time {{ttime1_format}}</p><p>Second time {{ttime2_format}}</p></div>',
+			template: '<div class="turtle-day"><p><span>{{date1}}</span>{{ttime1_format}}</p><p><span>{{date2}}</span>{{ttime2_format}}</p></div',
 			link: function (scope, elem, attrs) {
 				var my_time = scope.my_time;
 				var week_num = scope.index;
@@ -25,7 +25,8 @@ angular.module('turtleApp')
 					var ttime1 = calc_time(scope.my_id, false);
 					var ttime2 = calc_time(scope.my_id, true);
 
-					scope.date = ttime1.format('MMMM Do, YYYY');
+					scope.date1 = ttime1.format('MMMM Do, YYYY');
+					scope.date2 = ttime2.format('MMMM Do, YYYY');
 					scope.ttime1_format = print_time(ttime1, scope.military);
 					scope.ttime2_format = print_time(ttime2, scope.military);
 				}
