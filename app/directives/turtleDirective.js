@@ -21,8 +21,8 @@ angular.module('turtleApp')
 					update_times();
 				});
 
-				scope.$watch('my_id', function(oldVal, newVal) {
-					if (newVal !== null && newVal !== undefined)
+				scope.$watch('my_id', function() {
+					if (scope.my_id !== null && scope.my_id !== undefined)
 						localStorageService.set('id', scope.my_id);
 				});
 
