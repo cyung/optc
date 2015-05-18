@@ -34,9 +34,9 @@
 				</div>
 				<div class="collapse navbar-collapse" id="mainNavbar">
 					<ul class="nav navbar-nav nav-justified">
-						<li class="active"><a href="index.html">Turtle Time</a></li>
+						<li><a href="index.html">Turtle Time</a></li>
 						<li><a href="barrel.html">Barrel Breaking</a></li>
-						<li><a href="event.html">Daily Turtle Event</a></li>
+						<li class="active"><a href="event.html">Daily Turtle Event</a></li>
 					</ul>
 				</div>
 			</div>
@@ -45,31 +45,22 @@
 		<div class="jumbotron">
 			<div class="container" ng-app="turtleApp">
 				<h1>Turtle Time Calculator</h1>
-				<div ng-controller="TurtleCtrl as turtle">
+				<div ng-controller="EventCtrl as turtle">
 					<div class="id">
 						<span>6th ID digit: </span>
-						<input type="number" min="0" max="9" ng-model="id" class="input-id" select-on-click>
+						<input type="number" min="0" max="9" ng-model="turtle.id" class="input-id" select-on-click>
 						<input type="checkbox" name="militaryTime" ng-model="military"> 24hr format
 					</div>
 					<p>Your time zone: {{turtle.timezone}}</p>
-					<turtle-day 
+					<event-day 
 						military="military"
 						index="$index"
-						my-id="id"
+						my-id="turtle.id"
 						my-time="turtle.my_time"
-						ng-repeat="t in turtle.range(3) track by $index"
-						ng-class="{'hidden': !$first && !turtle.see_more}"
+						ng-repeat="t in turtle.range(7) track by $index"
 						>
-					</turtle-day>
-					<button type="button" class="btn btn-info see-more" ng-click="turtle.see_more=true" ng-class="{'hidden': turtle.see_more}">See More</button>
+					</event-day>
 				</div>
-				<h2>FAQ:</h2>
-				<h3>Will you keep updating it?</h3>
-				<p>This site <strong>automatically updates</strong> itself.</p>
-				<h3>How?</h3>
-				<p>Source code <a href="https://github.com/cyung/optc">here</a>.</p>
-				<h3>Feedback/Other Questions</h3>
-				<p>Message me on reddit <a href="http://www.reddit.com/user/cyung/">here</a>.
 
 			</div>
 		</div>
@@ -78,9 +69,10 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<script src="app/lib/moment.min.js"></script>
+		<script src="app/lib/angular-local-storage.min.js"></script>
 		<script src="app/app.js"></script>
-		<script src="app/controllers/turtleCtrl.js"></script>
-		<script src="app/directives/turtleDirective.js"></script>
+		<script src="app/controllers/eventCtrl.js"></script>
+		<script src="app/directives/eventDirective.js"></script>
 	</body>
 
 </html>
