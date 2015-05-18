@@ -39,6 +39,12 @@ angular.module('turtleApp')
 					var weekly_order = [0,1,2,3,4];
 					var ttime = my_time.clone();
 					var offset = week_num + my_time.isoWeek() + 2;
+
+					// temporary fix for event
+					// fix offset number at end of turtle event
+					if (week_num === 1)
+						offset += 3;
+
 					offset = offset % 5;
 
 					for (var i=0; i < offset; i++)
