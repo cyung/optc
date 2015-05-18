@@ -45,7 +45,6 @@
 		<div class="jumbotron">
 			<div class="container" ng-app="turtleApp">
 				<h1>Turtle Time Calculator</h1>
-				<h2>NOTE: Times listed may be incorrect. Check back in an hour after I confirm and update.</h2>
 				<div ng-controller="EventCtrl as turtle">
 					<div class="id">
 						<span>6th ID digit: </span>
@@ -58,7 +57,7 @@
 						index="$index"
 						my-id="turtle.id"
 						my-time="turtle.my_time"
-						ng-repeat="t in turtle.range(7) track by $index"
+						ng-repeat="t in turtle.range(3) track by $index"
 						>
 					</event-day>
 				</div>

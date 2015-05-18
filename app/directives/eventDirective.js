@@ -46,15 +46,17 @@ angular.module('turtleApp')
 				function calc_time(id, second_time) {
 					var weekly_order = [0,1,2,3,4];
 					var ttime = my_time.clone();
-					var offset = day_num + my_time.isoWeek() + 2;
+					var offset = day_num + 4;
 					offset = offset % 5;
 
 					for (var i=0; i < offset; i++)
 						weekly_order.unshift(weekly_order.pop());
 
 					for (i=0; i < day_num; i++) {
-						ttime.add(1, 'day');
+						ttime.add(2, 'days');
 					}
+					if (day_num === 2)
+						ttime.add(1, 'days');
 
 					if (id>4)
 						id -=5;

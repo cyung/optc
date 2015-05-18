@@ -3,7 +3,7 @@ angular.module('turtleApp')
 		var self = this;
 		self.timezone = jstz.determine().name();
 
-		self.my_time = moment.utc("2015-05-18 13:00").local();
+		self.my_time = moment.utc("2015-05-19 13:00").local();
 		self.id = localStorageService.get('id');
 		self.military = JSON.parse(localStorageService.get('military'));
 
