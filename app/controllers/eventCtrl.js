@@ -5,6 +5,7 @@ angular.module('turtleApp')
 
 		self.my_time = moment.utc("2015-05-18 13:00").local();
 		self.id = localStorageService.get('id');
+		self.military = JSON.parse(localStorageService.get('military'));
 
 		self.range = function(num) {
 			return new Array(num);

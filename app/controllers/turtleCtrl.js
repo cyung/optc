@@ -9,6 +9,7 @@ angular.module('turtleApp')
 			self.my_time.add(1, 'week');
 
 		self.id = localStorageService.get('id');
+		self.military = JSON.parse(localStorageService.get('military'));
 
 		self.range = function(num) {
 			return new Array(num);

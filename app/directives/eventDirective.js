@@ -17,13 +17,12 @@ angular.module('turtleApp')
 
 				scope.$watch('military', function(value) {
 					update_times();
+					if (scope.military !== null && scope.military !== undefined)
+						localStorageService.set('military', scope.military);
 				});
 
 				scope.$watch('my_id', function(value) {
 					update_times();
-				});
-
-				scope.$watch('my_id', function() {
 					if (scope.my_id !== null && scope.my_id !== undefined)
 						localStorageService.set('id', scope.my_id);
 				});
@@ -39,6 +38,8 @@ angular.module('turtleApp')
 					scope.date2 = ttime2.format('MMMM Do, YYYY');
 					scope.ttime1_format = print_time(ttime1, scope.military);
 					scope.ttime2_format = print_time(ttime2, scope.military);
+					console.log(scope.military);
+					console.log(scope.ttime1_format);
 
 				}
 
@@ -51,7 +52,7 @@ angular.module('turtleApp')
 					for (var i=0; i < offset; i++)
 						weekly_order.unshift(weekly_order.pop());
 
-					for (var i=0; i < day_num; i++) {
+					for (i=0; i < day_num; i++) {
 						ttime.add(1, 'day');
 					}
 

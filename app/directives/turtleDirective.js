@@ -15,13 +15,12 @@ angular.module('turtleApp')
 
 				scope.$watch('military', function(value) {
 					update_times();
+					if (scope.military !== null)
+						localStorageService.set('military', scope.military);
 				});
 
 				scope.$watch('my_id', function(value) {
 					update_times();
-				});
-
-				scope.$watch('my_id', function() {
 					if (scope.my_id !== null && scope.my_id !== undefined)
 						localStorageService.set('id', scope.my_id);
 				});
@@ -45,7 +44,7 @@ angular.module('turtleApp')
 					for (var i=0; i < offset; i++)
 						weekly_order.unshift(weekly_order.pop());
 
-					for (var i=0; i < week_num; i++) {
+					for (i=0; i < week_num; i++) {
 						ttime.add(1, 'week');
 					}
 
