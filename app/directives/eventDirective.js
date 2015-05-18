@@ -12,6 +12,8 @@ angular.module('turtleApp')
 			link: function (scope, elem, attrs) {
 				var my_time = scope.my_time;
 				var day_num = scope.index;
+				var now = moment();
+				var end = my_time.clone().add(7,'days');
 
 				scope.$watch('military', function(value) {
 					update_times();
@@ -25,9 +27,13 @@ angular.module('turtleApp')
 					var ttime1 = calc_time(scope.my_id, false);
 					var ttime2 = calc_time(scope.my_id, true);
 
+					if (ttime1.isBefore(now) || ttime1.isAfter(end))
+						elem.remove();
+
 					scope.date = ttime1.format('MMMM Do, YYYY');
 					scope.ttime1_format = print_time(ttime1, scope.military);
 					scope.ttime2_format = print_time(ttime2, scope.military);
+
 				}
 
 				function calc_time(id, second_time) {
