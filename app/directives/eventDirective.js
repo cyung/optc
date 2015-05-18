@@ -1,5 +1,5 @@
 angular.module('turtleApp')
-	.directive('eventDay', [function () {
+	.directive('eventDay', function (localStorageService) {
 		return {
 			restrict: 'AE',
 			scope: {
@@ -21,6 +21,11 @@ angular.module('turtleApp')
 
 				scope.$watch('my_id', function(value) {
 					update_times();
+				});
+
+				scope.$watch('my_id', function(oldVal, newVal) {
+					if (newVal !== null && newVal !== undefined)
+						localStorageService.set('id', scope.my_id);
 				});
 
 				function update_times() {
@@ -66,7 +71,7 @@ angular.module('turtleApp')
 				}
 			}
 		};
-	}])
+	})
 	.directive('selectOnClick', [function () {
 		return {
 			restrict: 'A',

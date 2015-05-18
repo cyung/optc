@@ -48,14 +48,14 @@
 				<div ng-controller="TurtleCtrl as turtle">
 					<div class="id">
 						<span>6th ID digit: </span>
-						<input type="number" min="0" max="9" ng-model="id" class="input-id" select-on-click>
+						<input type="number" min="0" max="9" ng-model="turtle.id" class="input-id" select-on-click>
 						<input type="checkbox" name="militaryTime" ng-model="military"> 24hr format
 					</div>
 					<p>Your time zone: {{turtle.timezone}}</p>
 					<turtle-day 
 						military="military"
 						index="$index"
-						my-id="id"
+						my-id="turtle.id"
 						my-time="turtle.my_time"
 						ng-repeat="t in turtle.range(5) track by $index"
 						ng-class="{'hidden': $index>1 && !turtle.see_more}"
@@ -78,6 +78,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<script src="app/lib/moment.min.js"></script>
+		<script src="app/lib/angular-local-storage.min.js"></script>
 		<script src="app/app.js"></script>
 		<script src="app/controllers/turtleCtrl.js"></script>
 		<script src="app/directives/turtleDirective.js"></script>

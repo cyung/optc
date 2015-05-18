@@ -1,5 +1,5 @@
 angular.module('turtleApp')
-	.controller('TurtleCtrl', function(){
+	.controller('TurtleCtrl', function($scope, localStorageService){
 		var self = this;
 		self.timezone = jstz.determine().name();
 
@@ -7,6 +7,8 @@ angular.module('turtleApp')
 		var end = self.my_time.clone().add(18,'hours');
 		if (moment().isAfter(end))
 			self.my_time.add(1, 'week');
+
+		self.id = localStorageService.get('id');
 
 		self.range = function(num) {
 			return new Array(num);
