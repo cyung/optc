@@ -40,3 +40,20 @@
 .navbar-nav.nav-justified > li {
 	float: none;
 }
+
+.turtle-day {
+	margin-top: 20px;
+	
+
+
+
+	p {
+
+		&:first-child{
+			background-color: #ccc;
+		}
+		span {
+		margin-right:40px;
+		}
+	}
+}
