@@ -31,7 +31,9 @@ angular.module('turtleApp')
 					var ttime1 = calc_time(scope.my_id, false);
 					var ttime2 = calc_time(scope.my_id, true);
 
-					if (ttime2.isBefore(now) || ttime1.isAfter(end))
+					var ttime2_end = ttime2.clone().add(8, 'hours');
+
+					if (ttime2_end.isBefore(now))
 						elem.remove();
 
 					scope.date1 = ttime1.format('MMMM Do, YYYY');
