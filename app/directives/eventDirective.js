@@ -31,7 +31,7 @@ angular.module('turtleApp')
 					var ttime1 = calc_time(scope.my_id, false);
 					var ttime2 = calc_time(scope.my_id, true);
 
-					if (ttime1.isBefore(now) || ttime1.isAfter(end))
+					if (ttime2.isBefore(now) || ttime1.isAfter(end))
 						elem.remove();
 
 					scope.date1 = ttime1.format('MMMM Do, YYYY');
@@ -49,9 +49,9 @@ angular.module('turtleApp')
 					for (var i=0; i < offset; i++)
 						weekly_order.unshift(weekly_order.pop());
 
-					for (i=0; i < day_num; i++) {
+					for (i=0; i < day_num; i++)
 						ttime.add(2, 'days');
-					}
+					
 					if (day_num === 2)
 						ttime.add(1, 'days');
 
