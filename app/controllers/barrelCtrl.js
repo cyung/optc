@@ -37,6 +37,7 @@ angular.module('barrelApp')
 			var gold   = [3,8,2,7,1,6,0,5,4,9];
 
 			var offset = day_num + 2;
+			offset += 2;
 
 			var start1 = (offset*4) % 20;
 			var start2 = (offset*2) % 10;
