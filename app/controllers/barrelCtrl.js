@@ -10,7 +10,7 @@ angular.module('barrelApp')
 
 		self.day_num = day.dayOfYear();
 		self.day = day.clone().add(1, 'days').format('x');
-		
+		console.log('day ', day);
 		self.times = [];
 
 		set_time();
@@ -31,13 +31,14 @@ angular.module('barrelApp')
 				self.times.push(calc_day(i));
 		}
 
-		function calc_day(day_num) {
+		function calc_day(day_offset) {
 			var wooden = [0,5,4,9,3,8,4,9,2,7,3,8,1,6,2,7,0,5,1,6];
 			var silver = [1,6,2,7,0,5,1,6,0,5,4,9,3,8,4,9,2,7,3,8];
 			var gold   = [3,8,2,7,1,6,0,5,4,9];
 
-			var offset = day_num + 2;
-			offset += 2;
+			var offset = self.day_num + day_offset + 4;
+			offset = offset % 5;
+			console.log('offset = ', offset);
 
 			var start1 = (offset*4) % 20;
 			var start2 = (offset*2) % 10;
@@ -47,7 +48,7 @@ angular.module('barrelApp')
 			var chest_gold   = gold  .slice(start2, start2+2);
 
 			var now = moment();
-			for (var i=0; i<day_num; i++)
+			for (var i=0; i<day_offset; i++)
 				now.add(1,'day');
 
 			var date = now.format('YYYY/MM/DD');
