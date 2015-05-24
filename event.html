@@ -90,12 +90,6 @@
 					<event-time day="event.day"></event-time>
 				</h2>
 				<table ng-table class="table table-bordered table-striped">
-<!-- 					<tr>
-						<th>{{'BB_DATE' | translate}}</th>
-						<th>{{'BB_WOODEN' | translate}}</th>
-						<th>{{'BB_SILVER' | translate}}</th>
-						<th>{{'BB_GOLD' | translate}}</th>
-					</tr> -->
 					<tr ng-repeat="day in event.times">
 						<td data-title="'Date'">{{day.date}}</td>
 						<td data-title="'2x Drop'">{{day.drop}}</td>
