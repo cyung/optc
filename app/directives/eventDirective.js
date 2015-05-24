@@ -105,4 +105,22 @@ angular.module('app')
 				});
 			}
 		};
-	}]);
+	}])
+	.directive('eventTime', function () {
+		return {
+			restrict: 'AE',
+			scope: {
+				day: '='
+			},
+			template: function (scope, elem, attrs) {
+				var day = moment().utc().startOf('day').add(12,'hours');
+				var now = moment();
+				if (day.isBefore(now))
+					day.add(1, 'days');
+				html = '<timer end-time="' + day + '">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>';
+				return html;
+			},
+			compile: function(elem, attrs) {
+			}
+		};
+	});
