@@ -37,7 +37,7 @@ angular.module('app')
 			var stamina = ['Orange Town', 'Shell Town, Little Garden', "Alvida's Hideout, Whiskey Peak", 'Fuschia Village, Twin Cape', 'Loguetown', 'Arlong Park', 'Baratie'];
 			var beli = ['Baratie, Whiskey Peak', "Syrup Village, Twin Cape", 'Loguetown', 'Arlong Park', 'Baratie', 'Syrup Village', 'Little Garden'];
 
-			var offset = self.day_num + day_offset + 4;
+			var offset = self.day_num + day_offset + 2;
 			offset = offset % 7;
 
 			var day_drop = drop[offset];
