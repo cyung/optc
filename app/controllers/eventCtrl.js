@@ -28,24 +28,21 @@ angular.module('app')
 
 		function set_time() {
 			self.times = [];
-			for (var i=0; i<5; i++)
+			for (var i=0; i<7; i++)
 				self.times.push(calc_day(i));
 		}
 
 		function calc_day(day_offset) {
-			var wooden = [0,5,4,9,3,8,4,9,2,7,3,8,1,6,2,7,0,5,1,6];
-			var silver = [1,6,2,7,0,5,1,6,0,5,4,9,3,8,4,9,2,7,3,8];
-			var gold   = [3,8,2,7,1,6,0,5,4,9];
+			var drop = ['Loguetown', 'Arlong Park', 'Baratie', 'Syrup Village', 'Orange Town, Little Garden', 'Shell Town, Whiskey Peak', "Alvida's Hideout, Twin Cape"];
+			var stamina = ['Orange Town', 'Shell Town, Little Garden', "Alvida's Hideout, Whiskey Peak", 'Fuschia Village, Twin Cape', 'Loguetown', 'Arlong Park', 'Baratie'];
+			var beli = ['Baratie, Whiskey Peak', "Syrup Village, Twin Cape", 'Loguetown', 'Arlong Park', 'Baratie', 'Syrup Village', 'Little Garden'];
 
 			var offset = self.day_num + day_offset + 4;
-			offset = offset % 5;
+			offset = offset % 7;
 
-			var start1 = (offset*4) % 20;
-			var start2 = (offset*2) % 10;
-
-			var chest_wooden = wooden.slice(start1, start1+4);
-			var chest_silver = silver.slice(start1, start1+4);
-			var chest_gold   = gold  .slice(start2, start2+2);
+			var day_drop = drop[offset];
+			var day_stamina = stamina[offset];
+			var day_beli = beli[offset];
 
 			var now = moment();
 			for (var i=0; i<day_offset; i++)
@@ -53,13 +50,13 @@ angular.module('app')
 
 			var date = now.format('YYYY/MM/DD');
 
-			var chest_day = {};
-			chest_day.date = date;
-			chest_day.wooden = chest_wooden;
-			chest_day.silver = chest_silver;
-			chest_day.gold = chest_gold;
+			var day_bonus = {};
+			day_bonus.date = date;
+			day_bonus.drop = day_drop;
+			day_bonus.stamina = day_stamina;
+			day_bonus.beli = day_beli;
 
-			return chest_day;
+			return day_bonus;
 		}
 
 		self.range = function(num) {

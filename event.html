@@ -66,28 +66,40 @@
 			</div>
 		</nav>
 
-		<div class="jumbotron" ng-controller="EventCtrl as turtle">
+		<div class="jumbotron" ng-controller="EventCtrl as event">
 			<div class="container">
 				<h1>{{'TT_TITLE' | translate}}</h1>
 				<div>
 					<div class="id">
 						<span>{{'TT_DIGIT' | translate}}</span>
-						<input type="number" min="0" max="9" ng-model="turtle.id" class="input-id" select-on-click>
-						<input type="checkbox" name="militaryTime" ng-model="turtle.military">{{'TT_FORMAT' | translate}}
+						<input type="number" min="0" max="9" ng-model="event.id" class="input-id" select-on-click>
+						<input type="checkbox" name="militaryTime" ng-model="event.military">{{'TT_FORMAT' | translate}}
 					</div>
-					<p>{{'TT_TIMEZONE' | translate}} {{turtle.timezone}}</p>
+					<p>{{'TT_TIMEZONE' | translate}} {{event.timezone}}</p>
 					<event-day 
-						military="turtle.military"
+						military="event.military"
 						index="$index"
-						my-id="turtle.id"
-						my-time="turtle.my_time"
-						ng-repeat="t in turtle.range(3) track by $index"
+						my-id="event.id"
+						my-time="event.my_time"
+						ng-repeat="t in event.range(3) track by $index"
 						locale="locale.locale"
 						>
 					</event-day>
 				</div>
-				<p><strong>NOTE:</strong> Times have been confirmed by setting my phone ahead.</p>
-
+				<table ng-table class="table table-bordered table-striped">
+<!-- 					<tr>
+						<th>{{'BB_DATE' | translate}}</th>
+						<th>{{'BB_WOODEN' | translate}}</th>
+						<th>{{'BB_SILVER' | translate}}</th>
+						<th>{{'BB_GOLD' | translate}}</th>
+					</tr> -->
+					<tr ng-repeat="day in event.times">
+						<td data-title="'Date'">{{day.date}}</td>
+						<td data-title="'2x Drop'">{{day.drop}}</td>
+						<td data-title="'1/2 Stamina'">{{day.stamina}}</td>
+						<td data-title="'2x Beli'">{{day.beli}}</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 

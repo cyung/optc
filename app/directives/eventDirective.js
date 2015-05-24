@@ -44,8 +44,6 @@ angular.module('app')
 					if (scope.locale !== null){
 						ttime1.locale(scope.locale);
 						ttime2.locale(scope.locale);
-						console.log(scope.locale);
-						console.log(ttime1.locale());
 					}
 					if (scope.locale === 'de'){
 						scope.date1 = ttime1.format('Do MMMM YYYY');

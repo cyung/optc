@@ -3,7 +3,7 @@ angular.module('app')
 		$translateProvider.translations('en', {
 			NAV_TURTLE: 'Turtle Time',
 			NAV_BARREL: 'Barrel Breaking',
-			NAV_EVENT: 'Turtle Event',
+			NAV_EVENT: 'Event',
 			NAV_SETTINGS: 'Settings',
 			TT_TITLE: 'Turtle Time Calculator',
 			TT_DIGIT: '6th ID digit:',
@@ -20,7 +20,7 @@ angular.module('app')
 		.translations('de', {
 			NAV_TURTLE: 'Turtle Zeiten',
 			NAV_BARREL: 'Barrel Breaking',
-			NAV_EVENT: 'Turtle Event',
+			NAV_EVENT: 'Event',
 			NAV_SETTINGS: 'Einstellungen',
 			TT_TITLE: 'Turtle Zeiten Rechner',
 			TT_DIGIT: '6th Ziffer der ID:',
