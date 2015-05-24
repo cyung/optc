@@ -1,9 +1,40 @@
+/*==============================
+=            NAVBAR            =
+==============================*/
+
+
+@media (max-width: 769px) {
+	.language-picker {
+		display: none;
+	}
+
+	#settings {
+		display: block !important;
+	}
+}
+
+.navbar-nav {
+	li a{
+		font-size: 24px;
+		font-family: 'Squada One', cursive;
+	}
+}
+.container {
+	max-width: 900px;
+	margin: auto;
+}
+
+#settings {
+	display: none;
+}
+
+
 .jumbotron {
 	background: #fff;
 	padding-top: 0;
 	margin-top: -20px;
 	h1, h2 {
-		font-family: Roboto, cursive;
+		font-family: 'Squada One', cursive;
 	}
 	p {
 		font-family: Lora,sans-serif;
@@ -14,6 +45,7 @@
 	}
 	input[type="checkbox"] {
 		margin-left: 20px;
+		margin-right: 5px;
 	}
 }
 
@@ -43,10 +75,6 @@
 
 .turtle-day {
 	margin-top: 20px;
-	
-
-
-
 	p {
 
 		&:first-child{

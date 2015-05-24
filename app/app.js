@@ -1,2 +1,1 @@
-angular.module('turtleApp', ['LocalStorageModule']);
-angular.module('barrelApp', ['timer', 'ngTable']);
+angular.module('app', ['LocalStorageModule', 'timer', 'ngTable', 'pascalprecht.translate', 'ui.bootstrap', 'polyglotLanguageSwitcher']);

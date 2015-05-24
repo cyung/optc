@@ -1,4 +1,4 @@
-angular.module('turtleApp')
+angular.module('app')
 	.controller('TurtleCtrl', function($scope, localStorageService){
 		var self = this;
 		self.timezone = jstz.determine().name();

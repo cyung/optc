@@ -1,5 +1,5 @@
-angular.module('barrelApp')
-	.directive('chestType', [function () {
+angular.module('app')
+	.directive('chestType', function () {
 		return {
 			restrict: 'AE',
 			scope: {
@@ -28,8 +28,8 @@ angular.module('barrelApp')
 				scope.date = date.format('MMMM Do, YYYY');
 			}
 		};
-	}])
-	.directive('barrelTime', [function () {
+	})
+	.directive('barrelTime', function () {
 		return {
 			restrict: 'AE',
 			scope: {
@@ -46,4 +46,4 @@ angular.module('barrelApp')
 			compile: function(elem, attrs) {
 			}
 		};
-	}]);
+	});

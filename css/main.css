@@ -1,16 +1,37 @@
+/*==============================
+=            NAVBAR            =
+==============================*/
+@media (max-width: 769px) {
+  .language-picker {
+    display: none; }
+
+  #settings {
+    display: block !important; } }
+.navbar-nav li a {
+  font-size: 24px;
+  font-family: 'Squada One', cursive; }
+
+.container {
+  max-width: 900px;
+  margin: auto; }
+
+#settings {
+  display: none; }
+
 .jumbotron {
   background: #fff;
   padding-top: 0;
   margin-top: -20px; }
   .jumbotron h1, .jumbotron h2 {
-    font-family: Roboto, cursive; }
+    font-family: 'Squada One', cursive; }
   .jumbotron p {
     font-family: Lora,sans-serif;
     margin: 0; }
   .jumbotron span {
     font-family: Lora,sans-serif; }
   .jumbotron input[type="checkbox"] {
-    margin-left: 20px; }
+    margin-left: 20px;
+    margin-right: 5px; }
 
 .id {
   margin-top: 15px; }

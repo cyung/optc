@@ -1,4 +1,4 @@
-angular.module('turtleApp')
+angular.module('app')
 	.directive('eventDay', function (localStorageService) {
 		return {
 			restrict: 'AE',
@@ -6,7 +6,8 @@ angular.module('turtleApp')
 				military: '=',
 				index: '=',
 				my_id: '=myId',
-				my_time: '=myTime'
+				my_time: '=myTime',
+				locale: '='
 			},
 			template: '<div class="turtle-day"><p><span>{{date1}}</span>{{ttime1_format}}</p><p><span>{{date2}}</span>{{ttime2_format}}</p></div',
 			link: function (scope, elem, attrs) {
@@ -27,6 +28,10 @@ angular.module('turtleApp')
 						localStorageService.set('id', scope.my_id);
 				});
 
+				scope.$watch('locale', function(value) {
+					update_times();
+				});
+
 				function update_times() {
 					var ttime1 = calc_time(scope.my_id, false);
 					var ttime2 = calc_time(scope.my_id, true);
@@ -36,8 +41,20 @@ angular.module('turtleApp')
 					if (ttime2_end.isBefore(now))
 						elem.remove();
 
-					scope.date1 = ttime1.format('MMMM Do, YYYY');
-					scope.date2 = ttime2.format('MMMM Do, YYYY');
+					if (scope.locale !== null){
+						ttime1.locale(scope.locale);
+						ttime2.locale(scope.locale);
+						console.log(scope.locale);
+						console.log(ttime1.locale());
+					}
+					if (scope.locale === 'de'){
+						scope.date1 = ttime1.format('Do MMMM YYYY');
+						scope.date2 = ttime2.format('Do MMMM YYYY');
+					} else {
+						scope.date1 = ttime1.format('MMMM Do, YYYY');
+						scope.date2 = ttime2.format('MMMM Do, YYYY');
+					}
+
 					scope.ttime1_format = print_time(ttime1, scope.military);
 					scope.ttime2_format = print_time(ttime2, scope.military);
 				}

@@ -1,5 +1,5 @@
-angular.module('barrelApp')
-	.controller('BarrelCtrl', function($scope, ngTableParams){
+angular.module('app')
+	.controller('BarrelCtrl', function($scope){
 		var self = this;
 		self.see_more = false;
 
@@ -10,20 +10,9 @@ angular.module('barrelApp')
 
 		self.day_num = day.dayOfYear();
 		self.day = day.clone().add(1, 'days').format('x');
-		console.log('day ', day);
 		self.times = [];
 
 		set_time();
-
-		// $scope.tableParams = new ngTableParams({
-		//         page: 1,            // show first page
-		//         count: 10           // count per page
-		//     }, {
-		//         total: self.times.length, // length of data
-		//         getData: function ($defer, params) {
-		//             $defer.resolve(self.times.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-		//         }
-		//     });
 
 		function set_time() {
 			self.times = [];
@@ -38,7 +27,6 @@ angular.module('barrelApp')
 
 			var offset = self.day_num + day_offset + 4;
 			offset = offset % 5;
-			console.log('offset = ', offset);
 
 			var start1 = (offset*4) % 20;
 			var start2 = (offset*2) % 10;

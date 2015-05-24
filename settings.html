@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Turtle Time Calc</title>
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link href="css/polyglot-language-switcher-2.css" rel="stylesheet">
+		<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+		<link href='http://fonts.googleapis.com/css?family=Squada+One|Lora' rel='stylesheet' type='text/css'>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script src="app/lib/moment.min.js"></script>
+		<script src="app/lib/angular-local-storage.min.js"></script>
+		<script src="app/lib/angular-translate.min.js"></script>
+		<script src="app/lib/angular-timer.min.js"></script>
+		<script src="app/lib/humanize-duration.js"></script>
+		<script src="app/lib/ng-table.min.js"></script>
+		<script src="app/lib/ui-bootstrap-tpls-0.13.0.min.js"></script>
+		<script src="app/lib/angular-polyglot.language.switcher.js"></script>
+		<script src="app/lib/momentjs/locale/de.js"></script>
+		<script src="app/app.js"></script>
+		<script src="app/controllers/eventCtrl.js"></script>
+		<script src="app/controllers/localeCtrl.js"></script>
+		<script src="app/directives/eventDirective.js"></script>
+		<script src="app/config/localizeConfig.js"></script>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-62547536-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+	</head>
+
+	<body ng-app="app" ng-controller="LocaleCtrl as locale" ng-cloak>
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavbar">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				</div>
+				<div class="collapse navbar-collapse" id="mainNavbar">
+					<ul class="nav navbar-nav">
+						<li><a href="index.html">{{ 'NAV_TURTLE' | translate }}</a></li>
+						<li><a href="barrel.html">{{ 'NAV_BARREL' | translate }}</a></li>
+						<li><a href="event.html">{{ 'NAV_EVENT' | translate }}</a></li>
+						<li class="active" id="settings"><a href="settings.html">{{ 'NAV_SETTINGS' | translate }}</a></li>
+					</ul>
+					<div class="language-picker navbar-right">
+						<pls id="pls1" items="plsModel.languages" open-mode="click" show-flag="true" selected-lang="{{locale.flag}}" language-changed-callback="onLanguageChanged(lang)"></pls>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<div class="jumbotron">
+			<div class="container">
+				<h1>{{ 'NAV_SETTINGS' | translate }}</h1>
+				<pls id="pls1" items="plsModel.languages" open-mode="click" show-flag="true" language-changed-callback="onLanguageChanged(lang)"></pls>
+			</div>
+		</div>
+
+	</body>
+
+</html>
