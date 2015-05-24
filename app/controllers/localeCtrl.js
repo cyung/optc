@@ -23,6 +23,7 @@ angular.module('app')
 				// {id: 'fr_FR',title: 'French (France)',name: ' Français (France)',flagImg: 'images/flags/fr.png',flagTitle: 'France'},
 				// {id: 'it_IT',title: 'Italian',name: ' Italiano',flagImg: 'images/flags/it.png',flagTitle: 'Italy'},
 				{id: 'de_DE',title: 'German',name: ' Deutsch',flagImg: 'images/flags/de.png',flagTitle: 'Germany'},
+				{id: 'es_ES',title: 'Spanish',name: ' Español',flagImg: 'images/flags/es.png',flagTitle: 'Spain'},
 				// {id: 'jp_JP',title: 'Japanese',name: ' 日本語',flagImg: 'images/flags/jp.png',flagTitle: 'Japan'},
 				// {id: 'cn_CN',title: 'Simplified Chinese (China)',name: ' 中文(简体)',flagImg: 'images/flags/cn.png',flagTitle: 'China'},
 			]

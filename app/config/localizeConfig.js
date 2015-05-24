@@ -33,6 +33,23 @@ angular.module('app')
 			BB_WOODEN: 'Holz',
 			BB_SILVER: 'Silber',
 			BB_GOLD: 'Gold'
+		})
+		.translations('es', {
+			NAV_TURTLE: 'Horario Tortugas',
+			NAV_BARREL: 'Friend Game',
+			NAV_EVENT: 'Evento',
+			NAV_SETTINGS: 'Configuración',
+			TT_TITLE: 'Horario Tortugas Calculadora',
+			TT_DIGIT: '6th dígito de ID:',
+			TT_FORMAT: '24 horas',
+			TT_TIMEZONE: 'Zona Horaria:',
+			TT_SEEMORE: 'ver más',
+			BB_TITLE: 'Friend Game',
+			BB_TIME: 'Tiempo hasta la próxima rotación:',
+			BB_DATE: 'Fecha',
+			BB_WOODEN: 'Madera',
+			BB_SILVER: 'Plata',
+			BB_GOLD: 'Oro'
 		});
 		$translateProvider.preferredLanguage('en');
 		$translateProvider.useSanitizeValueStrategy('escaped');

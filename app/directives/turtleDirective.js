@@ -38,13 +38,8 @@ angular.module('app')
 						ttime1.locale(scope.locale);
 						ttime2.locale(scope.locale);
 					}
-					if (scope.locale === 'de'){
-						scope.date1 = ttime1.format('Do MMMM YYYY');
-						scope.date2 = ttime2.format('Do MMMM YYYY');
-					} else {
-						scope.date1 = ttime1.format('MMMM Do, YYYY');
-						scope.date2 = ttime2.format('MMMM Do, YYYY');
-					}
+					scope.date1 = ttime1.format('LL');
+					scope.date2 = ttime2.format('LL');
 					scope.ttime1_format = print_time(ttime1, scope.military);
 					scope.ttime2_format = print_time(ttime2, scope.military);
 				}
