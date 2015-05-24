@@ -12,7 +12,7 @@
   font-family: 'Squada One', cursive; }
 
 .container {
-  max-width: 900px;
+  max-width: 900px !important;
   margin: auto; }
 
 #settings {
