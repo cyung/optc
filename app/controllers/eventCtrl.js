@@ -1,17 +1,23 @@
 angular.module('app')
 	.controller('EventCtrl', function(localStorageService){
+		var self = this;
 
 		/////////////////////////////////////////
 		// Implementation for one-time event //
 		/////////////////////////////////////////
-		var self = this;
-		self.timezone = jstz.determine().name();
+		// self.timezone = jstz.determine().name();
 
-		self.my_time = moment.utc("2015-05-19 13:00").local();
-		self.id = localStorageService.get('id');
-		self.military = JSON.parse(localStorageService.get('military'));
+		// self.my_time = moment.utc("2015-05-19 13:00").local();
+		// self.id = localStorageService.get('id');
+		// self.military = JSON.parse(localStorageService.get('military'));
 		
 
+		var coby = moment.utc("2015-05-27 03:00");
+		var chopper = moment.utc("2015-05-29 03:00");
+		self.coby = coby.format('x');
+		self.chopper = chopper.format('x');
+		console.log(self.coby);
+		console.log(self.chopper);
 		
 		self.see_more = false;
 

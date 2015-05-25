@@ -100,7 +100,7 @@ angular.module('app')
 			}
 		};
 	}])
-	.directive('eventTime', function () {
+	.directive('isleTime', function () {
 		return {
 			restrict: 'AE',
 			scope: {
@@ -113,8 +113,6 @@ angular.module('app')
 					day.add(1, 'days');
 				html = '<timer end-time="' + day + '">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>';
 				return html;
-			},
-			compile: function(elem, attrs) {
 			}
 		};
 	});

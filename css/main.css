@@ -1,6 +1,9 @@
 /*==============================
 =            NAVBAR            =
 ==============================*/
+@media (max-width: 640px) {
+  table {
+    margin-left: -15px !important; } }
 @media (max-width: 769px) {
   .language-picker {
     display: none; }

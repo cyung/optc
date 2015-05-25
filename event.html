@@ -69,7 +69,7 @@
 
 		<div class="jumbotron" ng-controller="EventCtrl as event">
 			<div class="container">
-				<h1>{{'TT_TITLE' | translate}}</h1>
+<!-- 				<h1>{{'TT_TITLE' | translate}}</h1>
 				<div>
 					<div class="id">
 						<span>{{'TT_DIGIT' | translate}}</span>
@@ -86,9 +86,15 @@
 						locale="locale.locale"
 						>
 					</event-day>
-				</div>
+				</div> -->
+				<h2>Coby/Helmeppo 
+					<timer end-time="1432695600000" max-time-unit="'hour'">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>
+				</h2>
+				<h2>Monster Chopper 
+					<timer end-time="1432868400000" max-time-unit="'hour'">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>
+				</h2>
 				<h2>{{'BB_TIME' | translate}}
-					<event-time day="event.day"></event-time>
+					<isle-time></isle-time>
 				</h2>
 				<table ng-table class="table table-bordered table-striped">
 					<tr ng-repeat="day in event.times">
