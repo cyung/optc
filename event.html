@@ -90,13 +90,15 @@
 				<h2>Coby/Helmeppo 
 					<timer end-time="1432695600000" max-time-unit="'hour'">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>
 				</h2>
+				<hr>
 				<h2>Monster Chopper 
 					<timer end-time="1432868400000" max-time-unit="'hour'">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>
 				</h2>
+				<hr>
 				<h2>{{'BB_TIME' | translate}}
 					<isle-time></isle-time>
 				</h2>
-				<table ng-table class="table table-bordered table-striped">
+				<table ng-table class="table table-bordered table-striped" id="bonus-isles">
 					<tr ng-repeat="day in event.times">
 						<td data-title="'Date'">{{day.date}}</td>
 						<td data-title="'2x Drop'">{{day.drop}}</td>

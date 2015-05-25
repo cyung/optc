@@ -2,7 +2,7 @@
 =            NAVBAR            =
 ==============================*/
 @media (max-width: 640px) {
-  table {
+  #bonus-isles {
     margin-left: -15px !important; } }
 @media (max-width: 769px) {
   .language-picker {
