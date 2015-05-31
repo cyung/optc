@@ -68,6 +68,8 @@
 
 .turtle-jpn :nth-child(odd) div p {
   background-color: #eee; }
+.turtle-jpn :nth-child(2n) div p {
+  margin-bottom: 15px !important; }
 
 .turtle-day-jpn p {
   margin-bottom: 0 !important; }

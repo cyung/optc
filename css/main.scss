@@ -102,6 +102,11 @@
 			background-color: #eee;
 		}
 	}
+	:nth-child(2n) {
+		div p {
+			margin-bottom: 15px !important;
+		}
+	}
 }
 .turtle-day-jpn {
 	p {
