@@ -3,16 +3,19 @@
 ==============================*/
 @media (max-width: 640px) {
   #bonus-isles {
-    margin-left: -15px !important; } }
+    margin-left: -30px !important; } }
 @media (max-width: 769px) {
   .language-picker {
     display: none; }
 
   #settings {
     display: block !important; } }
-.navbar-nav li a {
-  font-size: 24px;
-  font-family: 'Squada One', cursive; }
+.navbar-nav {
+  margin-top: -1px !important;
+  overflow-y: hidden; }
+  .navbar-nav li a {
+    font-size: 24px;
+    font-family: 'Squada One', cursive; }
 
 .container {
   max-width: 900px !important;
@@ -22,8 +25,8 @@
   display: none; }
 
 .jumbotron {
-  background: #fff;
-  padding-top: 0;
+  background: #fff !important;
+  padding-top: 0 !important;
   margin-top: -20px; }
   .jumbotron h1, .jumbotron h2 {
     font-family: 'Squada One', cursive; }
@@ -54,12 +57,26 @@
 .navbar-nav.nav-justified > li {
   float: none; }
 
-.turtle-day {
+.turtle-day p:first-child {
+  background-color: #eee;
+  margin-bottom: 0; }
+.turtle-day p span {
+  margin-right: 40px; }
+
+.turtle-global, .turtle-jpn {
   margin-top: 20px; }
-  .turtle-day p:first-child {
-    background-color: #eee; }
-  .turtle-day p span {
-    margin-right: 40px; }
+
+.turtle-jpn :nth-child(odd) div p {
+  background-color: #eee; }
+
+.turtle-day-jpn p {
+  margin-bottom: 0 !important; }
+.turtle-day-jpn p span {
+  margin-right: 40px; }
+
+.game-version {
+  margin-top: -10px;
+  margin-bottom: -10px; }
 
 table {
   margin-top: 20px !important;
@@ -67,5 +84,8 @@ table {
   margin: auto; }
   table th {
     text-align: center; }
+
+.nav, .pagination, .carousel, .panel-title a {
+  cursor: pointer; }
 
 /*# sourceMappingURL=main.css.map */

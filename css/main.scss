@@ -4,7 +4,7 @@
 
 @media (max-width: 640px) {
 	#bonus-isles {
-		margin-left: -15px !important;
+		margin-left: -30px !important;
 	}
 }
 
@@ -19,6 +19,8 @@
 }
 
 .navbar-nav {
+	margin-top: -1px !important; // remove margin for mobile
+	overflow-y: hidden;
 	li a{
 		font-size: 24px;
 		font-family: 'Squada One', cursive;
@@ -35,8 +37,8 @@
 
 
 .jumbotron {
-	background: #fff;
-	padding-top: 0;
+	background: #fff !important;
+	padding-top: 0 !important;
 	margin-top: -20px;
 	h1, h2 {
 		font-family: 'Squada One', cursive;
@@ -79,16 +81,40 @@
 }
 
 .turtle-day {
-	margin-top: 20px;
 	p {
-
 		&:first-child{
 			background-color: #eee;
+			margin-bottom: 0;
 		}
 		span {
 		margin-right:40px;
 		}
 	}
+}
+
+.turtle-global, .turtle-jpn {
+	margin-top: 20px;
+}
+
+.turtle-jpn {
+	:nth-child(odd) {
+		div p {
+			background-color: #eee;
+		}
+	}
+}
+.turtle-day-jpn {
+	p {
+		margin-bottom: 0 !important;
+	}
+	p span{
+	margin-right:40px;
+	}
+}
+
+.game-version {
+	margin-top: -10px;
+	margin-bottom: -10px;
 }
 
 table {
@@ -99,3 +125,5 @@ table {
 		text-align: center;
 	}
 }
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

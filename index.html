@@ -6,15 +6,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Turtle Time Calc</title>
 		<link rel="stylesheet" href="css/normalize.css">
-		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/main.css">
 		<link href="css/polyglot-language-switcher-2.css" rel="stylesheet">
 		<link rel="shortcut icon" type="image/ico" href="favicon.ico">
 		<link href='http://fonts.googleapis.com/css?family=Squada+One|Lora' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<script src="app/lib/moment.min.js"></script>
 		<script src="app/lib/angular-local-storage.min.js"></script>
 		<script src="app/lib/angular-translate.min.js"></script>
@@ -25,10 +23,13 @@
 		<script src="app/lib/angular-polyglot.language.switcher.js"></script>
 		<script src="app/lib/momentjs/locale/de.js"></script>
 		<script src="app/lib/momentjs/locale/es.js"></script>
+		<script src="app/lib/bower_components/angular-animate/angular-animate.min.js"></script>
 		<script src="app/app.js"></script>
 		<script src="app/controllers/turtleCtrl.js"></script>
 		<script src="app/controllers/localeCtrl.js"></script>
+		<script src="app/controllers/navbarCtrl.js"></script>
 		<script src="app/directives/turtleDirective.js"></script>
+		<script src="app/directives/collapseDirective.js"></script>
 		<script src="app/config/localizeConfig.js"></script>
 		<!-- <link href='http://fonts.googleapis.com/css?family=Patua+One|Comfortaa' rel='stylesheet' type='text/css'> -->
 		<script>
@@ -43,29 +44,29 @@
 		</script>
 	</head>
 
-	<body ng-app="app" ng-controller="LocaleCtrl as locale" ng-cloak>
+	<body ng-app="app" ng-controller="LocaleCtrl as locale" ng-cloak ng-click="collapse=false">
 
-		<nav class="navbar navbar-default">
-			<div class="container">
-				<div class="navbar-header">
-				  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavbar">
-				    <span class="icon-bar"></span>
-				    <span class="icon-bar"></span>
-				    <span class="icon-bar"></span> 
-				  </button>
-				</div>
-				<div class="collapse navbar-collapse" id="mainNavbar">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="index.html">{{ 'NAV_TURTLE' | translate }}</a></li>
-						<li><a href="barrel.html">{{ 'NAV_BARREL' | translate }}</a></li>
-						<li><a href="event.html">{{ 'NAV_EVENT' | translate }}</a></li>
-						<li id="settings"><a href="settings.html">{{ 'NAV_SETTINGS' | translate }}</a></li>
-					</ul>
-					<div class="language-picker navbar-right">
-						<pls id="pls1" items="plsModel.languages" open-mode="click" show-flag="true" selected-lang="{{locale.flag}}" language-changed-callback="onLanguageChanged(lang)"></pls>
+		<nav class="navbar navbar-default" ng-controller="NavbarCtrl" ng-click="$event.stopPropagation()">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" ng-click="isCollapsed=!isCollapsed">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span> 
+						</button>
+					</div>
+					<div class="navbar-collapse" collapse="isCollapsed">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="index.html">{{ 'NAV_TURTLE' | translate }}</a></li>
+							<li><a href="barrel.html">{{ 'NAV_BARREL' | translate }}</a></li>
+							<li><a href="event.html">{{ 'NAV_EVENT' | translate }}</a></li>
+							<li id="settings"><a href="settings.html">{{ 'NAV_SETTINGS' | translate }}</a></li>
+						</ul>
+						<div class="language-picker nav pull-right">
+							<pls id="pls1" items="plsModel.languages" open-mode="click" show-flag="true" selected-lang="{{locale.flag}}" language-changed-callback="onLanguageChanged(lang)"></pls>
+						</div>
 					</div>
 				</div>
-			</div>
 		</nav>
 
 		<div class="jumbotron">
@@ -78,16 +79,35 @@
 						<input class="digit" type="checkbox" name="militaryTime" ng-model="turtle.military">{{'TT_FORMAT' | translate}}
 					</div>
 					<p>{{'TT_TIMEZONE' | translate}} {{turtle.timezone}}</p>
-					<turtle-day 
-						military="turtle.military"
-						index="$index"
-						my-id="turtle.id"
-						my-time="turtle.my_time"
-						ng-repeat="t in turtle.range(4) track by $index"
-						ng-class="{'hidden': $index>1 && !turtle.see_more}"
-						locale="locale.locale"
-						>
-					</turtle-day>
+					<div class="btn-group game-version">
+						<label class="btn btn-default" ng-model="turtle.global" btn-radio="'global'">GLOBAL</label>
+						<label class="btn btn-default" ng-model="turtle.global" btn-radio="'jpn'">JPN</label>
+					</div>
+					<div class="turtle-global" ng-show="turtle.version()">
+						<turtle-day 
+							military="turtle.military"
+							index="$index"
+							my-id="turtle.id"
+							my-time="turtle.my_time"
+							ng-repeat="t in turtle.range(4) track by $index"
+							ng-class="{'hidden': $index>1 && !turtle.see_more}"
+							locale="locale.locale"
+							>
+						</turtle-day>
+					</div>
+					<div class="turtle-jpn" ng-show="!turtle.version()">
+						<turtle-day-jpn 
+							military="turtle.military"
+							index="$index"
+							my-id="turtle.id"
+							my-time="turtle.jpn_time"
+							ng-repeat="t in turtle.range(8) track by $index"
+							ng-class="{'hidden': $index>3 && !turtle.see_more}"
+							locale="locale.locale"
+							jpn-monday="turtle.jpn_monday"
+							>
+						</turtle-day-jpn>
+					</div>
 					<button type="button" class="btn btn-info see-more" ng-click="turtle.see_more=true" ng-class="{'hidden': turtle.see_more}">{{'TT_SEEMORE' | translate}}</button>
 				</div>
 				<h2>FAQ:</h2>
