@@ -109,7 +109,7 @@ angular.module('app')
 				});
 
 				function update_times() {
-					var ttime1 = calc_time(scope.my_id);
+					var ttime1 = calc_time(scope.my_id).local();
 					
 					if (scope.locale !== null){
 						ttime1.locale(scope.locale);
@@ -121,7 +121,7 @@ angular.module('app')
 				function calc_time(id) {
 					var weekly_order = [0,1,2,3,4];
 					var ttime = my_time.clone();
-					var offset = day_num + my_time.isoWeek() + 4;
+					var offset = day_num + my_time.isoWeek() + 3;
 
 					offset = offset % 5;
 

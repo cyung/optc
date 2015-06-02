@@ -5,7 +5,7 @@ angular.module('app')
 		self.global = 'global';
 
 		self.my_time = moment().utc().startOf('isoWeek').add(13, 'hours').local();
-		self.jpn_time = moment().utc().startOf('isoWeek').local(); // every monday and friday
+		self.jpn_time = moment().utc().startOf('isoWeek'); // every monday and friday
 		self.jpn_monday = true;
 		var now = moment();
 		var end = self.my_time.clone().add(18,'hours');
