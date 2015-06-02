@@ -87,6 +87,9 @@ table {
   table th {
     text-align: center; }
 
+.bb-hours {
+  margin-bottom: -5px; }
+
 .nav, .pagination, .carousel, .panel-title a {
   cursor: pointer; }
 

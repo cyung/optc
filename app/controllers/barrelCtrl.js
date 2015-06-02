@@ -1,9 +1,13 @@
 angular.module('app')
-	.controller('BarrelCtrl', function($scope){
+	.controller('BarrelCtrl', function($scope, localStorageService){
 		var self = this;
 		self.see_more = false;
 
 		var day = moment().utc().startOf('day').add(12,'hours');
+		var local = day.clone().local();
+		var hour_start = local.format('HH:mm');
+		var hour_end = local.clone().add(23,'hours').add(59, 'minutes').format('HH:mm');
+		var hour_string = ' ' + hour_start + '-' + hour_end;
 		var now = moment();
 		if (day.isAfter(now))
 			day.subtract(1, 'days');
@@ -13,6 +17,16 @@ angular.module('app')
 		self.times = [];
 
 		set_time();
+
+		$scope.show = localStorageService.get('bb_alt');
+		if ($scope.show === null)
+			$scope.show = false; // show hours
+
+		$scope.$watch('show', function(newVal) {
+			localStorageService.set('bb_alt');
+			console.log('bb_alt changed');
+			set_time();
+		});
 
 		function set_time() {
 			self.times = [];
@@ -40,6 +54,9 @@ angular.module('app')
 				now.add(1,'day');
 
 			var date = now.format('YYYY/MM/DD');
+			if ($scope.show)
+				date += hour_string;
+			console.log(day.format('HH:mm'));
 
 			var chest_day = {};
 			chest_day.date = date;
