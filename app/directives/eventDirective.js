@@ -111,7 +111,7 @@ angular.module('app')
 				var now = moment();
 				if (day.isBefore(now))
 					day.add(1, 'days');
-				html = '<timer end-time="' + day + '">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>';
+				html = '<timer end-time="' + day + '" class ="timer">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>';
 				return html;
 			}
 		};
