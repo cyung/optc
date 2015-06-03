@@ -82,13 +82,13 @@
 						<tr>
 							<th>{{'BB_DATE' | translate}}</th>
 							<th ng-show="!show">{{'BB_WOODEN' | translate}}</th>
-							<th ng-show="!show">{{'BB_SILVER' | translate}}</th>
+							<th>{{'BB_SILVER' | translate}}</th>
 							<th>{{'BB_GOLD' | translate}}</th>
 						</tr>
 						<tr ng-repeat="day in barrel.times">
 							<td data-title="'Date'">{{day.date}}</td>
 							<td data-title="'Wooden'" ng-show="!show">{{day.wooden}}</td>
-							<td data-title="'Silver'" ng-show="!show">{{day.silver}}</td>
+							<td data-title="'Silver'">{{day.silver}}</td>
 							<td data-title="'Gold'">{{day.gold}}</td>
 						</tr>
 					</table>
