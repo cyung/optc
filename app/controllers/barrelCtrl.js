@@ -24,7 +24,6 @@ angular.module('app')
 
 		$scope.$watch('show', function(newVal) {
 			localStorageService.set('bb_alt');
-			console.log('bb_alt changed');
 			set_time();
 		});
 
@@ -50,13 +49,20 @@ angular.module('app')
 			var chest_gold   = gold  .slice(start2, start2+2);
 
 			var now = moment();
-			for (var i=0; i<day_offset; i++)
-				now.add(1,'day');
+			now.add(day_offset,'day');
 
 			var date = now.format('YYYY/MM/DD');
-			if ($scope.show)
+
+			// Show Hours display
+			var day_end = day.clone().local().add(day_offset, 'day')
+				.add(23, 'hours').add(59, 'minutes');
+			var current_day = moment(date, "YYYY/MM/DD").endOf('day');
+			if ($scope.show){
+				if (current_day.isAfter(day_end))
+					date = current_day.subtract(1,'day').format('YYYY/MM/DD');
 				date += hour_string;
-			console.log(day.format('HH:mm'));
+			}
+
 
 			var chest_day = {};
 			chest_day.date = date;
