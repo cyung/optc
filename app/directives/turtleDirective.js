@@ -90,7 +90,6 @@ angular.module('app')
 			link: function (scope, elem, attrs) {
 				var my_time = scope.my_time;
 				var day_num = scope.index;
-				var jpn_monday = scope.jpn_monday;
 
 				scope.$watch('military', function(value) {
 					update_times();
@@ -122,6 +121,7 @@ angular.module('app')
 					var weekly_order = [0,1,2,3,4];
 					var ttime = my_time.clone();
 					var offset = day_num + my_time.isoWeek()*2 + 0;
+					var jpn_monday = scope.jpn_monday;
 					if (!jpn_monday)
 						offset += 1;
 
@@ -140,8 +140,7 @@ angular.module('app')
 						jpn_monday = !jpn_monday;
 					}
 
-					if (id>4)
-						id -=5;
+					id = id % 5;
 
 					ttime.add(weekly_order[id]*3, 'hours');
 
