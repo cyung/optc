@@ -96,7 +96,7 @@
 	margin-top: 20px;
 }
 
-.turtle-jpn {
+.turtle-jpn, .event-day {
 	:nth-child(odd) {
 		div p {
 			background-color: #eee;
@@ -108,7 +108,7 @@
 		}
 	}
 }
-.turtle-day-jpn {
+.turtle-day-jpn, .event-day-jpn {
 	p {
 		margin-bottom: 0 !important;
 	}

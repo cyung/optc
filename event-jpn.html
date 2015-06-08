@@ -58,8 +58,8 @@
 						<ul class="nav navbar-nav">
 							<li><a href="index.html">{{ 'NAV_TURTLE' | translate }}</a></li>
 							<li><a href="barrel.html">{{ 'NAV_BARREL' | translate }}</a></li>
-							<li class="active"><a href="event.html">{{ 'NAV_EVENT' | translate }}</a></li>
-							<li><a href="event-jpn.html">{{ 'NAV_EVENT' | translate }}(JPN)</a></li>
+							<li><a href="event.html">{{ 'NAV_EVENT' | translate }}</a></li>
+							<li class="active"><a href="event-jpn.html">{{ 'NAV_EVENT' | translate }}(JPN)</a></li>
 							<li id="settings"><a href="settings.html">{{ 'NAV_SETTINGS' | translate }}</a></li>
 						</ul>
 						<div class="language-picker nav pull-right">
@@ -71,7 +71,7 @@
 
 		<div class="jumbotron" ng-controller="EventCtrl as event">
 			<div class="container">
-<!-- 				<h1>{{'TT_TITLE' | translate}}</h1>
+				<h1>Cotton Candy Calculator</h1>
 				<div>
 					<div class="id">
 						<span>{{'TT_DIGIT' | translate}}</span>
@@ -79,31 +79,18 @@
 						<input type="checkbox" name="militaryTime" ng-model="event.military">{{'TT_FORMAT' | translate}}
 					</div>
 					<p>{{'TT_TIMEZONE' | translate}} {{event.timezone}}</p>
-					<event-day 
-						military="event.military"
-						index="$index"
-						my-id="event.id"
-						my-time="event.my_time"
-						ng-repeat="t in event.range(3) track by $index"
-						locale="locale.locale"
-						>
-					</event-day>
-				</div> -->
-<!-- 				<h2>Monster Chopper 
-					<timer end-time="1432868400000" max-time-unit="'hour'">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>
-				</h2>
-				<hr> -->
-				<h2>{{'BB_TIME' | translate}}
-					<isle-time></isle-time>
-				</h2>
-				<table ng-table class="table table-bordered table-striped" id="bonus-isles">
-					<tr ng-repeat="day in event.times">
-						<td data-title="'Date'">{{day.date}}</td>
-						<td data-title="'2x Drop'">{{day.drop}}</td>
-						<td data-title="'1/2 Stamina'">{{day.stamina}}</td>
-						<td data-title="'2x Beli'">{{day.beli}}</td>
-					</tr>
-				</table>
+					<div class="event-day">
+						<event-day-jpn
+							military="event.military"
+							index="$index"
+							my-id="event.id"
+							my-time="event.my_time"
+							ng-repeat="t in event.range(3) track by $index"
+							locale="locale.locale"
+							>
+						</event-day-jpn>
+					</div>
+				</div>
 			</div>
 		</div>
 

@@ -63,14 +63,14 @@
 .turtle-global, .turtle-jpn {
   margin-top: 20px; }
 
-.turtle-jpn :nth-child(odd) div p {
+.turtle-jpn :nth-child(odd) div p, .event-day :nth-child(odd) div p {
   background-color: #eee; }
-.turtle-jpn :nth-child(2n) div p {
+.turtle-jpn :nth-child(2n) div p, .event-day :nth-child(2n) div p {
   margin-bottom: 15px !important; }
 
-.turtle-day-jpn p {
+.turtle-day-jpn p, .event-day-jpn p {
   margin-bottom: 0 !important; }
-.turtle-day-jpn p span {
+.turtle-day-jpn p span, .event-day-jpn p span {
   margin-right: 40px; }
 
 .game-version {

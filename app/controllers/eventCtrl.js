@@ -5,17 +5,12 @@ angular.module('app')
 		/////////////////////////////////////////
 		// Implementation for one-time event //
 		/////////////////////////////////////////
-		// self.timezone = jstz.determine().name();
+		self.timezone = jstz.determine().name();
 
-		// self.my_time = moment.utc("2015-05-19 13:00").local();
-		// self.id = localStorageService.get('id');
-		// self.military = JSON.parse(localStorageService.get('military'));
+		self.my_time = moment.utc("2015-06-09 00:00").local();
+		self.id = localStorageService.get('id');
+		self.military = JSON.parse(localStorageService.get('military'));
 		
-
-		// var coby = moment.utc("2015-05-27 03:00");
-		// var chopper = moment.utc("2015-05-29 03:00");
-		// self.coby = coby.format('x');
-		// self.chopper = chopper.format('x');
 
 		var day = moment().utc().startOf('day').add(12,'hours');
 		var now = moment();
