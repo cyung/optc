@@ -25,6 +25,16 @@ angular.module('app')
 		self.id = localStorageService.get('id');
 		self.military = JSON.parse(localStorageService.get('military'));
 
+		/*===========================================
+		=            HOTFIX for extra TT            =
+		===========================================*/
+		
+		self.jpn_time = moment.utc("2015-06-19 00:00").local();
+		
+		/*-----  End of HOTFIX for extra TT  ------*/
+		
+		
+
 		self.version = function() {
 			return (self.global === 'global');
 		};

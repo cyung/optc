@@ -96,21 +96,21 @@
 							>
 						</turtle-day>
 					</div>
-					<!-- <h2 ng-show="!turtle.version()">NOTE: Calculator has been fixed.</h2> -->
+					<h2 ng-show="!turtle.version()">NOTE: Updated.</h2>
 					<div class="turtle-jpn" ng-show="!turtle.version()">
 						<turtle-day-jpn 
 							military="turtle.military"
 							index="$index"
 							my-id="turtle.id"
 							my-time="turtle.jpn_time"
-							ng-repeat="t in turtle.range(8) track by $index"
+							ng-repeat="t in turtle.range(4) track by $index"
 							ng-class="{'hidden': $index>3 && !turtle.see_more}"
 							locale="locale.locale"
 							jpn-monday="turtle.jpn_monday"
 							>
 						</turtle-day-jpn>
 					</div>
-					<button type="button" class="btn btn-info see-more" ng-click="turtle.see_more=true" ng-class="{'hidden': turtle.see_more}">{{'TT_SEEMORE' | translate}}</button>
+<!-- 					<button type="button" class="btn btn-info see-more" ng-click="turtle.see_more=true" ng-class="{'hidden': turtle.see_more}">{{'TT_SEEMORE' | translate}}</button> -->
 				</div>
 				<h2>FAQ:</h2>
 				<h3>Will you keep updating it?</h3>
