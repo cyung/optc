@@ -24,6 +24,9 @@ angular.module('app')
 
 		self.id = localStorageService.get('id');
 		self.military = JSON.parse(localStorageService.get('military'));
+		self.global = localStorageService.get('version');
+		if (self.global === null)
+			self.global = 'global';
 
 		/*===========================================
 		=            HOTFIX for extra TT            =

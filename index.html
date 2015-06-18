@@ -60,7 +60,6 @@
 							<li class="active"><a href="index.html">{{ 'NAV_TURTLE' | translate }}</a></li>
 							<li><a href="barrel.html">{{ 'NAV_BARREL' | translate }}</a></li>
 							<li><a href="event.html">{{ 'NAV_EVENT' | translate }}</a></li>
-							<li><a href="event-jpn.html">{{ 'NAV_EVENT' | translate }}(JPN)</a></li>
 							<li id="settings"><a href="settings.html">{{ 'NAV_SETTINGS' | translate }}</a></li>
 						</ul>
 						<div class="language-picker nav pull-right">
@@ -80,7 +79,7 @@
 						<input class="digit" type="checkbox" name="militaryTime" ng-model="turtle.military">{{'TT_FORMAT' | translate}}
 					</div>
 					<p>{{'TT_TIMEZONE' | translate}} {{turtle.timezone}}</p>
-					<div class="btn-group game-version">
+					<div class="btn-group game-version ttc-version">
 						<label class="btn btn-default" ng-model="turtle.global" btn-radio="'global'">GLOBAL</label>
 						<label class="btn btn-default" ng-model="turtle.global" btn-radio="'jpn'">JPN</label>
 					</div>
@@ -96,7 +95,7 @@
 							>
 						</turtle-day>
 					</div>
-					<h2 ng-show="!turtle.version()">NOTE: Updated.</h2>
+					<!-- <h2 ng-show="!turtle.version()">NOTE: Updated.</h2> -->
 					<div class="turtle-jpn" ng-show="!turtle.version()">
 						<turtle-day-jpn 
 							military="turtle.military"

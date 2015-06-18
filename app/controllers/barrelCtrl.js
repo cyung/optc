@@ -18,11 +18,13 @@ angular.module('app')
 
 		set_time();
 
-		$scope.show = localStorageService.get('bb_alt');
-		if ($scope.show === null)
-			$scope.show = false; // show hours
+		self.show_hours = localStorageService.get('bb_alt');
+		if (self.show_hours === null)
+			self.show_hours = false; // show hours
 
-		$scope.$watch('show', function(newVal) {
+		$scope.$watch(function() {
+			return self.show_hours;
+		}, function(newVal) {
 			localStorageService.set('bb_alt');
 			set_time();
 		});
@@ -57,7 +59,7 @@ angular.module('app')
 			var day_end = day.clone().local().add(day_offset, 'day')
 				.add(23, 'hours').add(59, 'minutes');
 			var current_day = moment(date, "YYYY/MM/DD").endOf('day');
-			if ($scope.show){
+			if (self.show_hours){
 				if (current_day.isAfter(day_end))
 					date = current_day.subtract(1,'day').format('YYYY/MM/DD');
 				date += hour_string;

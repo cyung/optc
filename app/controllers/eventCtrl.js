@@ -1,27 +1,65 @@
 angular.module('app')
-	.controller('EventCtrl', function(localStorageService){
+	.controller('EventCtrl', function($scope, localStorageService){
 		var self = this;
 
-		/////////////////////////////////////////
-		// Implementation for one-time event //
-		/////////////////////////////////////////
-		self.timezone = jstz.determine().name();
-
-		self.my_time = moment.utc("2015-06-09 00:00").local();
-		self.id = localStorageService.get('id');
-		self.military = JSON.parse(localStorageService.get('military'));
+		/*======================================
+		=            One-time event            =
+		======================================*/
 		
+		// self.timezone = jstz.determine().name();
 
+		// self.my_time = moment.utc("2015-06-09 00:00").local();
+		// self.id = localStorageService.get('id');
+		// self.military = JSON.parse(localStorageService.get('military'));
+		
+		/*-----  End of One-time event  ------*/
+		
 		var day = moment().utc().startOf('day').add(12,'hours');
+		var day_jpn = moment().utc().startOf('day');
+		
 		var now = moment();
 		if (day.isAfter(now))
 			day.subtract(1, 'days');
 
 		self.day_num = day.dayOfYear();
-		self.day = day.clone().add(1, 'days').format('x');
+		self.next_day = day.clone().add(1, 'days').format('x');
 		self.times = [];
 
+		self.global = localStorageService.get('version');
+		if (self.global === null)
+			self.global = 'global';
+		self.show_hours = localStorageService.get('bb_alt');
+		if (self.show_hours === null)
+			self.show_hours = false; // show hours
+
+		calc_hour_string();
+		var drop = ['Loguetown', 'Arlong Park', 'Baratie', 'Syrup Village, Drum Island', 'Orange Town, Little Garden', 'Shell Town, Whiskey Peak', "Alvida's Hideout, Twin Cape"];
+		var stamina = ['Orange Town, Drum Island', 'Shell Town, Little Garden', "Alvida's Hideout, Whiskey Peak", 'Fuschia Village, Twin Cape', 'Loguetown', 'Arlong Park', 'Baratie'];
+		var beli = ['Baratie, Whiskey Peak', 'Syrup Village, Twin Cape', 'Loguetown', 'Arlong Park', 'Baratie', 'Syrup Village, Drum Island', 'Little Garden'];
+		var drop_jpn = ['Loguetown, Jaya', 'Arlong Park, Arbana', 'Baratie, Alabasta', 'Syrup Village, Drum Island', 'Orange Town, Little Garden', 'Shell Town, Whiskey Peak, Ark Maxim', "Alvida's Hideout, Twin Cape"];
+		var stamina_jpn = ['Orange Town, Drum Island', 'Shell Town, Little Garden', "Alvida's Hideout, Whiskey Peak", 'Fuschia Village, Twin Cape, Skypia', 'Loguetown, Jaya', 'Arlong Park, Arbana', 'Baratie, Alabasta'];
+		var beli_jpn = ['Baratie, Whiskey Peak, Ark Maxim', 'Syrup Village, Twin Cape, Skypia', 'Loguetown, Jaya', 'Arlong Park, Arbana', 'Baratie, Alabasta', 'Syrup Village, Drum Island', 'Little Garden'];
+		
+		self.version = function() {
+			return (self.global === 'global');
+		}
+
 		set_time();
+
+		$scope.$watch(function() {
+			return self.show_hours;
+		}, function(newVal) {
+			localStorageService.set('bb_alt');
+			set_time();
+		});
+
+		$scope.$watch(function() {
+			return self.global;
+		}, function(newVal) {
+			set_time();
+			localStorageService.set('version');
+		});
+
 
 		function set_time() {
 			self.times = [];
@@ -30,22 +68,44 @@ angular.module('app')
 		}
 
 		function calc_day(day_offset) {
-			var drop = ['Loguetown', 'Arlong Park', 'Baratie', 'Syrup Village', 'Orange Town, Little Garden', 'Shell Town, Whiskey Peak', "Alvida's Hideout, Twin Cape"];
-			var stamina = ['Orange Town', 'Shell Town, Little Garden', "Alvida's Hideout, Whiskey Peak", 'Fuschia Village, Twin Cape', 'Loguetown', 'Arlong Park', 'Baratie'];
-			var beli = ['Baratie, Whiskey Peak', "Syrup Village, Twin Cape", 'Loguetown', 'Arlong Park', 'Baratie', 'Syrup Village', 'Little Garden'];
-
 			var offset = self.day_num + day_offset + 2;
 			offset = offset % 7;
 
-			var day_drop = drop[offset];
-			var day_stamina = stamina[offset];
-			var day_beli = beli[offset];
+			var day_drop, day_stamina, day_beli;
+			if (self.version()) {
+				day_drop = drop[offset];
+				day_stamina = stamina[offset];
+				day_beli = beli[offset];
+			} else {
+				day_drop = drop_jpn[offset];
+				day_stamina = stamina_jpn[offset];
+				day_beli = beli_jpn[offset];
+			}
 
 			var now = moment();
 			for (var i=0; i<day_offset; i++)
 				now.add(1,'day');
 
 			var date = now.format('YYYY/MM/DD');
+
+			// Show Hours display
+			if (self.show_hours) {
+				var day_end = day.clone().local().add(day_offset, 'day')
+					.add(23, 'hours').add(59, 'minutes');
+				var day_end_jpn = day_jpn.clone().local().add(day_offset, 'day')
+					.add(23, 'hours').add(59, 'minutes');
+				var current_day = moment(date, "YYYY/MM/DD").endOf('day');
+
+				if (self.version()) {
+					if (current_day.isAfter(day_end))
+						date = current_day.subtract(1,'day').format('YYYY/MM/DD');
+					date += self.hour_string;
+				} else {
+					if (current_day.isAfter(day_end_jpn))
+						date = current_day.subtract(1,'day').format('YYYY/MM/DD');
+					date += self.hour_string_jpn;
+				}
+			}
 
 			var day_bonus = {};
 			day_bonus.date = date;
@@ -54,6 +114,19 @@ angular.module('app')
 			day_bonus.beli = day_beli;
 
 			return day_bonus;
+		}
+
+		function calc_hour_string() {
+			var local = day.clone().local();
+			var local_jpn = day_jpn.clone().local();
+			var local_end = local.clone().add(23, 'hours').add(59, 'minutes');
+			var local_end_jpn = local_jpn.clone().add(23, 'hours').add(59, 'minutes');
+			var hour_start = local.format('HH:mm');
+			var hour_start_jpn = local_jpn.format('HH:mm');
+			var hour_end = local_end.format('HH:mm');
+			var hour_end_jpn = local_end_jpn.format('HH:mm');
+			self.hour_string = ' ' + hour_start + '-' + hour_end;
+			self.hour_string_jpn = ' ' + hour_start_jpn + '-' + hour_end_jpn;
 		}
 
 		self.range = function(num) {
