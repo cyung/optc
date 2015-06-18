@@ -15,17 +15,17 @@ angular.module('app')
 		self.day_num = day.dayOfYear();
 		self.day = day.clone().add(1, 'days').format('x');
 		self.times = [];
+		self.show_hours = JSON.parse(localStorageService.get('show_hours'));
+		if (self.show_hours === null)
+			self.show_hours = false;
 
 		set_time();
 
-		self.show_hours = localStorageService.get('bb_alt');
-		if (self.show_hours === null)
-			self.show_hours = false; // show hours
 
 		$scope.$watch(function() {
 			return self.show_hours;
 		}, function(newVal) {
-			localStorageService.set('bb_alt');
+			localStorageService.set('show_hours', self.show_hours);
 			set_time();
 		});
 

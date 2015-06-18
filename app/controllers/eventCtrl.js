@@ -28,9 +28,9 @@ angular.module('app')
 		self.global = localStorageService.get('version');
 		if (self.global === null)
 			self.global = 'global';
-		self.show_hours = localStorageService.get('bb_alt');
+		self.show_hours = JSON.parse(localStorageService.get('show_hours'));
 		if (self.show_hours === null)
-			self.show_hours = false; // show hours
+			self.show_hours = false;
 
 		calc_hour_string();
 		var drop = ['Loguetown', 'Arlong Park', 'Baratie', 'Syrup Village, Drum Island', 'Orange Town, Little Garden', 'Shell Town, Whiskey Peak', "Alvida's Hideout, Twin Cape"];
@@ -42,7 +42,7 @@ angular.module('app')
 		
 		self.version = function() {
 			return (self.global === 'global');
-		}
+		};
 
 		set_time();
 

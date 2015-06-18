@@ -36,7 +36,11 @@ angular.module('app')
 		
 		/*-----  End of HOTFIX for extra TT  ------*/
 		
-		
+		$scope.$watch(function() {
+			return self.global;
+		}, function(newVal) {
+			localStorageService.set('version', self.global);
+		});
 
 		self.version = function() {
 			return (self.global === 'global');

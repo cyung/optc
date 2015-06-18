@@ -103,6 +103,12 @@
 					<input type="checkbox" name="bbAlt" ng-model="event.show_hours">{{'BB_ALT' | translate}}
 				</div>
 				<table ng-table class="table table-bordered table-striped" id="bonus-isles">
+					<tr>
+						<th>{{'BB_DATE' | translate}}</th>
+						<th>2x Drop</th>
+						<th>1/2 Stamina</th>
+						<th ng-show="!event.show_hours">2x Beli</th>
+					</tr>
 					<tr ng-repeat="day in event.times">
 						<td data-title="'Date'">{{day.date}}</td>
 						<td data-title="'2x Drop'">{{day.drop}}</td>
