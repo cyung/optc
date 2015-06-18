@@ -10,7 +10,7 @@
 		<link href="css/polyglot-language-switcher-2.css" rel="stylesheet">
 		<link rel="shortcut icon" type="image/ico" href="favicon.ico">
 		<link href='http://fonts.googleapis.com/css?family=Squada+One|Lora' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js"></script>
 		<script src="app/lib/moment.min.js"></script>
@@ -31,7 +31,7 @@
 		<script src="app/directives/barrelDirective.js"></script>
 		<script src="app/directives/collapseDirective.js"></script>
 		<script src="app/config/localizeConfig.js"></script>
-		<script>
+<!-- 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -40,7 +40,7 @@
 		  ga('create', 'UA-62547536-1', 'auto');
 		  ga('send', 'pageview');
 
-		</script>
+		</script> -->
 	</head>
 
 	<body ng-app="app" ng-controller="LocaleCtrl as locale" ng-cloak>
@@ -59,7 +59,6 @@
 							<li><a href="index.html">{{ 'NAV_TURTLE' | translate }}</a></li>
 							<li class="active"><a href="barrel.html">{{ 'NAV_BARREL' | translate }}</a></li>
 							<li><a href="event.html">{{ 'NAV_EVENT' | translate }}</a></li>
-							<li><a href="event-jpn.html">{{ 'NAV_EVENT' | translate }}(JPN)</a></li>
 							<li id="settings"><a href="settings.html">{{ 'NAV_SETTINGS' | translate }}</a></li>
 						</ul>
 						<div class="language-picker nav pull-right">
@@ -77,30 +76,22 @@
 						<barrel-time day="barrel.day"></barrel-time>
 					</h2>
 					<div class="bb-hours">
-						<input type="checkbox" name="bbAlt" ng-model="show">{{'BB_ALT' | translate}}
+						<input type="checkbox" name="bbAlt" ng-model="barrel.show_hours">{{'BB_ALT' | translate}}
 					</div>
 					<table ng-table class="table table-bordered table-striped">
 						<tr>
 							<th>{{'BB_DATE' | translate}}</th>
-							<th ng-show="!show">{{'BB_WOODEN' | translate}}</th>
+							<th ng-show="!barrel.show_hours">{{'BB_WOODEN' | translate}}</th>
 							<th>{{'BB_SILVER' | translate}}</th>
 							<th>{{'BB_GOLD' | translate}}</th>
 						</tr>
 						<tr ng-repeat="day in barrel.times">
 							<td data-title="'Date'">{{day.date}}</td>
-							<td data-title="'Wooden'" ng-show="!show">{{day.wooden}}</td>
+							<td data-title="'Wooden'" ng-show="!barrel.show_hours">{{day.wooden}}</td>
 							<td data-title="'Silver'">{{day.silver}}</td>
 							<td data-title="'Gold'">{{day.gold}}</td>
 						</tr>
 					</table>
-<!-- 					<chest-type 
-						index="{{$index}}"
-						day-num="barrel.day_num"
-						ng-repeat="t in barrel.range(5) track by $index"
-						ng-class="{'hidden': $index>1 && !barrel.see_more}"
-						>
-					</chest-type>
-					<button type="button" class="btn btn-info see-more" ng-click="barrel.see_more=true" ng-class="{'hidden': barrel.see_more}">See More</button> -->
 				</div>
 			</div>
 		</div>

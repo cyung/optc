@@ -24,6 +24,9 @@ angular.module('app')
 
 		self.id = localStorageService.get('id');
 		self.military = JSON.parse(localStorageService.get('military'));
+		self.global = localStorageService.get('version');
+		if (self.global === null)
+			self.global = 'global';
 
 		/*===========================================
 		=            HOTFIX for extra TT            =
@@ -33,7 +36,11 @@ angular.module('app')
 		
 		/*-----  End of HOTFIX for extra TT  ------*/
 		
-		
+		$scope.$watch(function() {
+			return self.global;
+		}, function(newVal) {
+			localStorageService.set('version', self.global);
+		});
 
 		self.version = function() {
 			return (self.global === 'global');
