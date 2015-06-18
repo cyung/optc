@@ -20,9 +20,13 @@ angular.module('app')
 		var now = moment();
 		if (day.isAfter(now))
 			day.subtract(1, 'days');
+		if (day_jpn.isAfter(now))
+			day_jpn.subtract(1, 'days');
 
-		self.day_num = day.dayOfYear();
+		var day_num = day.dayOfYear();
+		var day_num_jpn = day_jpn.dayOfYear();
 		self.next_day = day.clone().add(1, 'days').format('x');
+		self.next_day_jpn = day_jpn.clone().add(1, 'days').format('x');
 		self.times = [];
 
 		self.global = localStorageService.get('version');
@@ -33,6 +37,7 @@ angular.module('app')
 			self.show_hours = false;
 
 		calc_hour_string();
+		
 		var drop = ['Loguetown', 'Arlong Park', 'Baratie', 'Syrup Village, Drum Island', 'Orange Town, Little Garden', 'Shell Town, Whiskey Peak', "Alvida's Hideout, Twin Cape"];
 		var stamina = ['Orange Town, Drum Island', 'Shell Town, Little Garden', "Alvida's Hideout, Whiskey Peak", 'Fuschia Village, Twin Cape', 'Loguetown', 'Arlong Park', 'Baratie'];
 		var beli = ['Baratie, Whiskey Peak', 'Syrup Village, Twin Cape', 'Loguetown', 'Arlong Park', 'Baratie', 'Syrup Village, Drum Island', 'Little Garden'];
@@ -68,19 +73,20 @@ angular.module('app')
 		}
 
 		function calc_day(day_offset) {
-			var offset = self.day_num + day_offset + 2;
-			offset = offset % 7;
-
-			var day_drop, day_stamina, day_beli;
+			var offset, day_drop, day_stamina, day_beli;
 			if (self.version()) {
+				offset = (day_num + day_offset + 2) % 7;
 				day_drop = drop[offset];
 				day_stamina = stamina[offset];
 				day_beli = beli[offset];
 			} else {
+				offset = (day_num_jpn + day_offset) % 7;
 				day_drop = drop_jpn[offset];
 				day_stamina = stamina_jpn[offset];
 				day_beli = beli_jpn[offset];
 			}
+
+			offset = offset % 7;
 
 			var now = moment();
 			for (var i=0; i<day_offset; i++)
@@ -128,6 +134,13 @@ angular.module('app')
 			self.hour_string = ' ' + hour_start + '-' + hour_end;
 			self.hour_string_jpn = ' ' + hour_start_jpn + '-' + hour_end_jpn;
 		}
+
+		self.get_next_day = function(global) {
+			console.log('getting next day');
+			if (global)
+				return self.next_day;
+			return self.next_day_jpn;
+		};
 
 		self.range = function(num) {
 			return new Array(num);

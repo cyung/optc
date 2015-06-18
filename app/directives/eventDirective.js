@@ -175,16 +175,15 @@ angular.module('app')
 	}])
 	.directive('isleTime', function () {
 		return {
-			restrict: 'AE',
-			scope: {
-				day: '='
-			},
-			template: function (scope, elem, attrs) {
-				var day = moment().utc().startOf('day').add(12,'hours');
+			restrict: 'E',
+			template: function (elem, attrs) {
+				var day = moment().utc().startOf('day');
+				if (JSON.parse(attrs.global))
+					day.add(12, 'hours');
 				var now = moment();
 				if (day.isBefore(now))
 					day.add(1, 'days');
-				html = '<timer end-time="' + day + '" class ="timer">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>';
+				html = '<timer end-time="' + day.format('x') + '" class ="timer">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>';
 				return html;
 			}
 		};

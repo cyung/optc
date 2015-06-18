@@ -97,7 +97,9 @@
 					<label class="btn btn-default" ng-model="event.global" btn-radio="'jpn'">JPN</label>
 				</div>
 				<h2>{{'BB_TIME' | translate}}
-					<isle-time day="event.next_day"></isle-time>
+					<isle-time global="true" ng-show="event.version()"></isle-time>
+					<isle-time global="false" ng-show="!event.version()"></isle-time>
+					<!-- <isle-time global="event.next_day_jpn" ng-show="!event.version()"></isle-time> -->
 				</h2>
 				<div class="bb-hours">
 					<input type="checkbox" name="bbAlt" ng-model="event.show_hours">{{'BB_ALT' | translate}}
