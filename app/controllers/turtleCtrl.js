@@ -32,7 +32,7 @@ angular.module('app')
 		=            HOTFIX for extra TT            =
 		===========================================*/
 		
-		self.jpn_time = moment.utc("2015-06-17 00:00").local();
+		self.jpn_time = moment.utc("2015-06-20 00:00").local();
 		
 		/*-----  End of HOTFIX for extra TT  ------*/
 		

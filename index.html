@@ -91,7 +91,6 @@
 							my-id="turtle.id"
 							my-time="turtle.my_time"
 							ng-repeat="t in turtle.range(4) track by $index"
-							ng-class="{'hidden': $index>1 && !turtle.see_more}"
 							locale="locale.locale"
 							>
 						</turtle-day>
@@ -103,8 +102,7 @@
 							index="$index"
 							my-id="turtle.id"
 							my-time="turtle.jpn_time"
-							ng-repeat="t in turtle.range(4) track by $index"
-							ng-class="{'hidden': $index>3 && !turtle.see_more}"
+							ng-repeat="t in turtle.range(3) track by $index"
 							locale="locale.locale"
 							jpn-monday="turtle.jpn_monday"
 							>
