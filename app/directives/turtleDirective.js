@@ -120,7 +120,7 @@ angular.module('app')
 				function calc_time(id) {
 					var weekly_order = [0,1,2,3,4];
 					var ttime = my_time.clone();
-					var offset = day_num + my_time.isoWeek()*2 + 0;
+					var offset = day_num + my_time.isoWeek()*2 + 1;
 					var jpn_monday = scope.jpn_monday;
 					if (!jpn_monday)
 						offset += 1;
