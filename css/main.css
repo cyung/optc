@@ -98,4 +98,8 @@ table {
 .nav, .pagination, .carousel, .panel-title a {
   cursor: pointer; }
 
+iframe {
+  width: 100%;
+  height: 500px; }
+
 /*# sourceMappingURL=main.css.map */

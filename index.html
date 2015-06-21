@@ -60,6 +60,7 @@
 							<li class="active"><a href="index.html">{{ 'NAV_TURTLE' | translate }}</a></li>
 							<li><a href="barrel.html">{{ 'NAV_BARREL' | translate }}</a></li>
 							<li><a href="event.html">{{ 'NAV_EVENT' | translate }}</a></li>
+							<li><a href="contact.html">Contact Me</a></li>
 							<li id="settings"><a href="settings.html">{{ 'NAV_SETTINGS' | translate }}</a></li>
 						</ul>
 						<div class="language-picker nav pull-right">
@@ -108,6 +109,7 @@
 							jpn-monday="turtle.jpn_monday"
 							>
 						</turtle-day-jpn>
+						<h2 ng-show="!turtle.version()">Incorrect? <a href="contact.html">Let me know.</a></h2>
 					</div>
 <!-- 					<button type="button" class="btn btn-info see-more" ng-click="turtle.see_more=true" ng-class="{'hidden': turtle.see_more}">{{'TT_SEEMORE' | translate}}</button> -->
 				</div>

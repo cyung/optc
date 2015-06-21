@@ -1,0 +1,12 @@
+{
+    "name": "cyung/optc",
+    "authors": [
+        {
+            "name": "Chris Yung",
+            "email": "cyung@bu.edu"
+        }
+    ],
+    "require": {
+        "wildbit/postmark-php": "^1.1"
+    }
+}
