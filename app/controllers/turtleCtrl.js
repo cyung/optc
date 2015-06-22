@@ -27,14 +27,6 @@ angular.module('app')
 		self.global = localStorageService.get('version');
 		if (self.global === null)
 			self.global = 'global';
-
-		/*===========================================
-		=            HOTFIX for extra TT            =
-		===========================================*/
-		
-		self.jpn_time = moment.utc("2015-06-20 00:00").local();
-		
-		/*-----  End of HOTFIX for extra TT  ------*/
 		
 		$scope.$watch(function() {
 			return self.global;

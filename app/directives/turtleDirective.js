@@ -132,23 +132,13 @@ angular.module('app')
 					for (var i=0; i < offset; i++)
 						weekly_order.unshift(weekly_order.pop());
 
-					// for (i=0; i < day_num; i++){
-					// 	if (jpn_monday)
-					// 		ttime.add(4, 'days');
-					// 	else
-					// 		ttime.add(3, 'days');
-					// 	jpn_monday = !jpn_monday;
-					// }
-
-					/*==============================
-					=            HOTFIX            =
-					==============================*/
-					
-					for (i=0; i< day_num; i++)
-							ttime.add(1, 'days');
-					
-					
-					/*-----  End of HOTFIX  ------*/
+					for (i=0; i < day_num; i++){
+						if (jpn_monday)
+							ttime.add(4, 'days');
+						else
+							ttime.add(3, 'days');
+						jpn_monday = !jpn_monday;
+					}
 					
 					
 
