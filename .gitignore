@@ -3,3 +3,5 @@ css/bootstrap.css.map
 css/main.css.map
 /vendor/
 process.php
+composer.json
+composer.lock
