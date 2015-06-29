@@ -6,9 +6,6 @@
 		var self = this;
 		set_params();
 
-
-
-
 		function set_params() {
 			self.timezone = jstz.determine().name();
 			self.global = 'global';
@@ -34,13 +31,14 @@
 			localStorageService.set('id', newVal);
 			turtleFact.set_id(self.id);
 			self.ttimes = turtleFact.get_ttimes();
-			console.log(self.ttimes);
-		});		
+		});
+
 		$scope.$watch(function() {
 			return self.military;
 		}, function(newVal, oldVal) {
 			localStorageService.set('military', newVal);
-		});		
+		});
+
 		$scope.$watch(function() {
 			return self.global;
 		}, function(newVal, oldVal) {

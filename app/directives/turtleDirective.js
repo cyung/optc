@@ -9,7 +9,7 @@ angular.module('app')
 				my_time: '=myTime',
 				locale: '='
 			},
-			template: '<div class="turtle-day"><p><span>{{date1}}</span>{{ttime1_format}}</p><p><span>{{date2}}</span>{{ttime2_format}}</p></div',
+			template: '<div class="turtle-day"><p><span>{{date1}}</span>{{ttime1_format}}</p><p><span>{{date2}}</span>{{ttime2_format}}</p></div>',
 			link: function (scope, elem, attrs) {
 				var my_time = scope.my_time;
 				var week_num = scope.index;

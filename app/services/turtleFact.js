@@ -19,9 +19,11 @@
 
 		function set_id(i) {
 			id = i;
+			get_ttimes();
 		}
 
 		function get_ttimes() {
+			ttimes = [];
 			calc_ttimes_all();
 			return ttimes;
 		}

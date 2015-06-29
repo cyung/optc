@@ -106,11 +106,11 @@ iframe {
 =            TTIME BETA            =
 ==================================*/
 .ttime-global {
-  margin-top: 10px;
-  list-style: none;
-  font-family: Lora;
-  font-size: 20px; }
-  .ttime-global li:nth-child(2n) {
+  margin-top: 10px; }
+  .ttime-global ttime-day {
     background-color: #eee; }
+
+.ttime-day > p > span {
+  margin-right: 15px; }
 
 /*# sourceMappingURL=main.css.map */

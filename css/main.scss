@@ -159,11 +159,11 @@ iframe {
 
 .ttime-global {
 	margin-top: 10px;
-	list-style: none;
-	font-family: Lora;
-	font-size: 20px;
-
-	li:nth-child(2n) {
+	ttime-day {
 		background-color: #eee;
 	}
+}
+
+.ttime-day>p>span{
+	margin-right: 15px;
 }
