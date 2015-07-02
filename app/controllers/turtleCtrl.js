@@ -33,7 +33,7 @@ angular.module('app')
 		=            HOTFIX            =
 		==============================*/
 		
-		self.jpn_time = moment.utc('2015-06-29 0:00');
+		self.jpn_time = moment.utc('2015-06-29 00:00');
 		
 		/*-----  End of HOTFIX  ------*/
 		
