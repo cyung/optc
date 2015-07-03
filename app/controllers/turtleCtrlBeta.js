@@ -5,7 +5,6 @@
 	function turtleCtrlBeta($scope, localStorageService, turtleFact) {
 		var self = this;
 		set_params();
-		console.log(turtleFact.get_ttimes());
 
 		function set_params() {
 			self.timezone = jstz.determine().name();
