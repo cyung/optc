@@ -60,7 +60,7 @@
 			var calendarData = createCalendarData();		
 			var calendarLink = document.createElement('a');
 			calendarLink.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(calendarData));
-			calendarLink.setAttribute('download', 'TurtleTimes.ical');
+			calendarLink.setAttribute('download', 'TurtleTimes.ics');
 			
 			calendarLink.style.display = 'none';
 			document.body.appendChild(calendarLink);
