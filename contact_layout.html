@@ -32,6 +32,7 @@
 	<body ng-app="app">
 
 		<div class="container" data-ng-controller="ContactCtrl">
+			<h2>Please read the FAQ first.</h2>
 		  <form name="helpForm" novalidate role="form">
 		    <div class="form-group">
 		      <label for="name">Name </label>
@@ -63,6 +64,11 @@
 		  </form>
 		  <div id="messages" class="alert alert-success" data-ng-show="messages" data-ng-bind="messages"></div>
 		  <div data-ng-show="progress.active()">Sending&hellip;</div>
+		  <h2>FAQ</h2>
+		  <h3>Can you update for the yellow turtle times?</h3>
+		  <p>I will not know the times until the day before the event, so check back later.</p>
+		  <h3>Do I need to do anything for daylight savings?</h3>
+		  <p>No.</p>
 		</div>
 
 	</body>
