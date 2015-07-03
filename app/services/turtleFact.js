@@ -22,9 +22,12 @@
 			get_ttimes();
 		}
 
-		function get_ttimes() {
+		function get_ttimes(num_weeks) {
+			if (num_weeks === undefined) {
+				num_weeks = 2;
+			}
 			ttimes = [];
-			calc_ttimes_all();
+			calc_ttimes_all(num_weeks);
 			return ttimes;
 		}
 
@@ -36,10 +39,9 @@
 			return my_time;
 		}
 
-		function calc_ttimes_all() {
+		function calc_ttimes_all(num_weeks) {
 			var i = 0;
 			var second_time = false;
-			var num_weeks = 2;
 
 			while (i<num_weeks) {
 				ttimes.push(calc_ttime(i, second_time));

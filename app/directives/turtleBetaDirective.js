@@ -23,6 +23,8 @@
 				var ttime = turtleFact.get_ttimes()[scope.index];
 				if (scope.locale !== null)
 					ttime.locale(scope.locale);
+				else 
+					ttime.locale('en');
 
 				scope.date = ttime.format('LL');
 				scope.ttime_format = print_time(ttime);
