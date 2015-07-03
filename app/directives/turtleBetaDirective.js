@@ -20,7 +20,7 @@
 
 		function linker(scope, elem, attrs) {
 			function update_times() {
-				var ttime = turtleFact.get_ttimes()[scope.index];
+				var ttime = turtleFact.get_ttimes()[scope.index].local();
 				if (scope.locale !== null)
 					ttime.locale(scope.locale);
 
