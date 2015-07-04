@@ -11,8 +11,7 @@
 
 		var services = {
 			set_id: set_id,
-			get_ttimes: get_ttimes,
-			calc_ttimes: calc_ttimes_all
+			get_ttimes: get_ttimes
 		};
 
 		return services;

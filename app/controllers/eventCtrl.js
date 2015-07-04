@@ -6,11 +6,11 @@ angular.module('app')
 		=            One-time event            =
 		======================================*/
 		
-		// self.timezone = jstz.determine().name();
+		self.timezone = jstz.determine().name();
 
-		// self.my_time = moment.utc("2015-06-09 00:00").local();
-		// self.id = localStorageService.get('id');
-		// self.military = JSON.parse(localStorageService.get('military'));
+		self.my_time = moment.utc("2015-07-08 13:00").local();
+		self.id = localStorageService.get('id');
+		self.military = JSON.parse(localStorageService.get('military'));
 		
 		/*-----  End of One-time event  ------*/
 		

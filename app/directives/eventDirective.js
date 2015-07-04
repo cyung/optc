@@ -63,8 +63,6 @@ angular.module('app')
 					for (i=0; i < day_num; i++)
 						ttime.add(2, 'days');
 					
-					if (day_num === 2)
-						ttime.add(1, 'days');
 
 					if (id>4)
 						id -=5;
