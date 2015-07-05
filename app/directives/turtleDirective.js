@@ -120,50 +120,23 @@ angular.module('app')
 				function calc_time(id) {
 					var weekly_order = [0,1,2,3,4];
 					var ttime = my_time.clone();
-					// var offset = day_num + my_time.isoWeek()*2 + 3;
-					// var jpn_monday = scope.jpn_monday;
-					// if (!jpn_monday)
-					// 	offset += 1;
+					var offset = day_num + my_time.isoWeek()*2 + 1;
+					var jpn_monday = scope.jpn_monday;
+					if (!jpn_monday)
+						offset += 1;
 
-					// offset = offset % 5;
-
-					/*==============================
-					=            HOTFIX            =
-					==============================*/
-					
-					var offset = (day_num + 2) % 5;
-					
-					
-					/*-----  End of HOTFIX  ------*/
-					
-					
-
-					// console.log('offset = ', offset);
+					offset = offset % 5;
 
 					for (var i=0; i < offset; i++)
 						weekly_order.unshift(weekly_order.pop());
 
-					// for (i=0; i < day_num; i++){
-					// 	if (jpn_monday)
-					// 		ttime.add(4, 'days');
-					// 	else
-					// 		ttime.add(3, 'days');
-					// 	jpn_monday = !jpn_monday;
-					// }
-					
-					/*==============================
-					=            HOTFIX            =
-					==============================*/
-					
-					for (var i=0; i<day_num; i++) {
-						ttime.add(1, 'days');
-						if (i==1 || i==3)
-							ttime.add(1, 'days');
+					for (i=0; i < day_num; i++){
+						if (jpn_monday)
+							ttime.add(4, 'days');
+						else
+							ttime.add(3, 'days');
+						jpn_monday = !jpn_monday;
 					}
-					
-					/*-----  End of HOTFIX  ------*/
-					
-					
 
 					id = id % 5;
 

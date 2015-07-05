@@ -29,16 +29,6 @@ angular.module('app')
 			self.global = 'global';
 
 
-		/*==============================
-		=            HOTFIX            =
-		==============================*/
-		
-		self.jpn_time = moment.utc('2015-06-29 00:00');
-		
-		/*-----  End of HOTFIX  ------*/
-		
-		
-		
 		$scope.$watch(function() {
 			return self.global;
 		}, function(newVal) {
