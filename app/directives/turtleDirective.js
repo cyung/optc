@@ -47,7 +47,7 @@ angular.module('app')
 				function calc_time(id, second_time) {
 					var weekly_order = [0,1,2,3,4];
 					var ttime = my_time.clone();
-					var offset = week_num + my_time.isoWeek();
+					var offset = week_num + my_time.isoWeek() + 3;
 
 					offset = offset % 5;
 

@@ -18,7 +18,7 @@
 		}
 		
 		function formatCalendarDate(date) {
-			return date.format('YYYYMMDDTHHmmss')
+			return date.format('YYYYMMDDTHHmmss');
 		}
 		
 		function createCalendarData() {
@@ -56,8 +56,8 @@
 			return new Array(num);
 		};
 		
-		self.addToCalendar = function() {	
-			var calendarData = createCalendarData();		
+		self.addToCalendar = function() {
+			var calendarData = createCalendarData();
 			var calendarLink = document.createElement('a');
 			calendarLink.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(calendarData));
 			calendarLink.setAttribute('download', 'TurtleTimes.ics');
@@ -78,7 +78,6 @@
 			localStorageService.set('id', newVal);
 			turtleFact.set_id(self.id);
 			self.ttimes = turtleFact.get_ttimes(20);
-			
 		});
 
 		$scope.$watch(function() {
