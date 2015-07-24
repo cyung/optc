@@ -28,6 +28,15 @@ angular.module('app')
 		if (self.global === null)
 			self.global = 'global';
 
+		/*====================================
+		=            EVENT HOTFIX            =
+		====================================*/
+		
+		self.jpn_time = moment.utc("2015-07-24 00:00");
+		
+		/*-----  End of EVENT HOTFIX  ------*/
+		
+		
 
 		$scope.$watch(function() {
 			return self.global;

@@ -96,14 +96,14 @@
 						</turtle-day>
 					</div>
 					<!-- <h2 ng-show="turtle.version()">See the <a href="event.html">Event</a> page for yellow turtles.</h2> -->
-					<h2 ng-show="!turtle.version()">NOTE: Times are currently incorrect. Will be fixed within the hour. In the meantime, please refer to the blog.</h2>
+					<h2 ng-show="!turtle.version()">NOTE: Updated for event.</h2>
 					<div class="turtle-jpn" ng-show="!turtle.version()">
 						<turtle-day-jpn 
 							military="turtle.military"
 							index="$index"
 							my-id="turtle.id"
 							my-time="turtle.jpn_time"
-							ng-repeat="t in turtle.range(5) track by $index"
+							ng-repeat="t in turtle.range(4) track by $index"
 							locale="locale.locale"
 							jpn-monday="turtle.jpn_monday"
 							>

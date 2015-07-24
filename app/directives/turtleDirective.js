@@ -120,23 +120,44 @@ angular.module('app')
 				function calc_time(id) {
 					var weekly_order = [0,1,2,3,4];
 					var ttime = my_time.clone();
-					var offset = day_num + my_time.isoWeek()*2 + 1;
+					var offset = day_num + my_time.isoWeek()*2 + 4;
 					var jpn_monday = scope.jpn_monday;
 					if (!jpn_monday)
 						offset += 1;
 
+					/*====================================
+					=            EVENT HOTFIX            =
+					====================================*/
+					
+					var offset = day_num + 0;
+					
+					/*-----  End of EVENT HOTFIX  ------*/
+					
+					
 					offset = offset % 5;
 
 					for (var i=0; i < offset; i++)
 						weekly_order.unshift(weekly_order.pop());
 
-					for (i=0; i < day_num; i++){
-						if (jpn_monday)
-							ttime.add(4, 'days');
-						else
-							ttime.add(3, 'days');
-						jpn_monday = !jpn_monday;
-					}
+					// for (i=0; i < day_num; i++){
+					// 	if (jpn_monday)
+					// 		ttime.add(4, 'days');
+					// 	else
+					// 		ttime.add(3, 'days');
+					// 	jpn_monday = !jpn_monday;
+					// }
+
+					/*====================================
+					=            EVENT HOTFIX            =
+					====================================*/
+					var event_offset = [2,1,4];
+					
+					for (var i=0; i < day_num; i++)
+						ttime.add(event_offset[i], 'days');
+					
+					/*-----  End of EVENT HOTFIX  ------*/
+					
+					
 
 					id = id % 5;
 
