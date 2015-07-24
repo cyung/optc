@@ -129,7 +129,8 @@ angular.module('app')
 					=            EVENT HOTFIX            =
 					====================================*/
 					
-					var offset = day_num + 0;
+					offset = day_num + 3;
+					console.log('offset = ', offset);
 					
 					/*-----  End of EVENT HOTFIX  ------*/
 					
