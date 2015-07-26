@@ -5,6 +5,7 @@
 		function turtleCtrlBeta($scope, localStorageService, turtleFact, $document) {
 		var self = this;
 		set_params();
+		note_permission();
 
 		function set_params() {
 			self.timezone = jstz.determine().name();
@@ -17,8 +18,21 @@
 				self.global = 'global';
 		}
 		
+		function note_permission() {
+			// check if supported
+			if (!("Notification" in window))
+				alert("This browser does not support notifications.");
+			// check permission
+			else if (Notification.permission !== 'denied') {
 
-
+				Notification.requestPermission(function (permission) {
+					// display sample notification if permission granted
+					if (permission === "granted")
+						var notification = new Notification("test notification");
+				});
+				
+			}
+		}
 
 		self.get_cal = function () {
 			turtleFact.get_cal();
