@@ -11,7 +11,8 @@
 
 		var services = {
 			set_id: set_id,
-			get_ttimes: get_ttimes
+			get_ttimes: get_ttimes,
+			get_cal: get_cal
 		};
 
 		return services;
@@ -21,24 +22,22 @@
 			get_ttimes();
 		}
 
-		function get_ttimes(num_weeks) {
-			if (num_weeks === undefined) {
-				num_weeks = 2;
-			}
+		function get_ttimes() {
 			ttimes = [];
-			calc_ttimes_all(num_weeks);
+			calc_ttimes_all();
 			return ttimes;
 		}
 
 		function get_current_time() {
-			var my_time = moment().utc().startOf('isoWeek').add(13, 'hours');
+			var my_time = moment.utc().startOf('isoWeek').add(13, 'hours').local();
 			var end = my_time.clone().add(18, 'hours');
 			if (moment().isAfter(end))
 				my_time.add(1, 'week');
 			return my_time;
 		}
 
-		function calc_ttimes_all(num_weeks) {
+		function calc_ttimes_all() {
+			var num_weeks = 2;
 			var i = 0;
 			var second_time = false;
 
@@ -53,7 +52,7 @@
 		function calc_ttime(week_num, second_time) {
 			var weekly_order = [0,1,2,3,4];
 			var ttime = my_time.clone();
-			var offset = week_num + my_time.isoWeek();
+			var offset = week_num + my_time.isoWeek() + 3;
 
 			offset = offset % 5;
 
@@ -72,5 +71,23 @@
 
 			return ttime;
 		}
+
+		function get_cal() {
+			var cal = ics();
+
+			var subject = "OPTC Turtle Time";
+			var description = "One Piece Treasure Cruise Turtle Time";
+			var location = "OPTC";
+			var begin, end;
+
+			for (var i=0; i<2; i++) {
+				begin = ttimes[i].format();
+				end = ttimes[i].clone().add(30, 'minutes').format();
+				cal.addEvent(subject, description, location, begin, end);
+			}
+
+			cal.download('turtle_time', '.ics');
+		}
+
 	}
 })();

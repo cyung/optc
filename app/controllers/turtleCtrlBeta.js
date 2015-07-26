@@ -17,36 +17,12 @@
 				self.global = 'global';
 		}
 		
-		function formatCalendarDate(date) {
-			return date.format('YYYYMMDDTHHmmss');
-		}
-		
-		function createCalendarData() {
-			var calendarData = "BEGIN:VCALENDAR\r\n" +
-			"VERSION:2.0\r\n" +
-			"PRODID:-//Microsoft Corporation//Outlook 12.0 MIMEDIR//EN\r\n" +
-			"CALSCALE:GREGORIAN\r\n" +
-			"METHOD:PUBLISH\r\n" +
-			"X-WR-CALNAME:OPTC Turtle Time\r\n" +
-			"X-WR-CALDESC:Turtle Times for One Piece Treasure Cruise\r\n";
-			for(var i = 0; i < self.ttimes.length; i++) {
-				var dtStart = formatCalendarDate(self.ttimes[i]);
-				var dtEnd = formatCalendarDate(self.ttimes[i].add(1, 'h'));
-				var utcNow = formatCalendarDate(moment.utc());
-				calendarData += "BEGIN:VEVENT\r\n" +
-				"DESCRIPTION:Log on to One Piece Treasure Cruise for Turtle Time!\r\n" +
-				"DTSTART;TZID="+self.timezone+":"+dtStart+"\r\n" +
-				"DTEND;TZID="+self.timezone+":"+dtEnd+"\r\n" +
-				"DTSTAMP:"+utcNow+"Z\r\n" +
-				"SUMMARY;LANGUAGE=en-us:Turtle Time\r\n" +
-				"UID:TT"+dtStart+"\r\n" +
-				"END:VEVENT\r\n";
 
-			}
-			calendarData += "END:VCALENDAR";
-			
-			return calendarData;
-		}
+
+
+		self.get_cal = function () {
+			turtleFact.get_cal();
+		};
 
 		self.version = function() {
 			return (self.global === 'global');
@@ -54,22 +30,6 @@
 
 		self.range = function(num) {
 			return new Array(num);
-		};
-		
-		self.addToCalendar = function() {
-			var calendarData = createCalendarData();
-			var calendarLink = document.createElement('a');
-			calendarLink.setAttribute('href', 'data:text/calendar;charset=utf-8,' + encodeURIComponent(calendarData));
-			calendarLink.setAttribute('download', 'TurtleTimes.ics');
-			
-			calendarLink.style.display = 'none';
-			document.body.appendChild(calendarLink);
-			
-			// Angular complains about multiple events if this isn't in a timeout.
-			setTimeout(function() {
-				calendarLink.click();
-				document.body.removeChild(calendarLink);
-			}, 1);
 		};
 
 		$scope.$watch(function() {
