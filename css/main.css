@@ -118,4 +118,14 @@ iframe {
     .ttime-day p span {
       margin-right: 15px; }
 
+.btn-notif {
+  margin: 5px 0 5px 0 !important; }
+
+.settings-notif * {
+  text-align: center; }
+.settings-notif div:first-child {
+  margin-bottom: 5px; }
+.settings-notif div > button {
+  margin-left: 20px; }
+
 /*# sourceMappingURL=main.css.map */

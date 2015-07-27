@@ -18,6 +18,12 @@
 				self.global = 'global';
 
 			self.notif_support = true;
+			self.notif_time = localStorageService.get('notif_time');
+			if (self.notif_time === null)
+				self.notif_time = 10;
+			self.notif_sound = JSON.parse(localStorageService.get('notif_sound'));
+			if (self.notif_sound === null)
+				self.notif_sound = false;
 		}
 		
 		function note_permission() {
@@ -62,6 +68,20 @@
 			return self.global;
 		}, function(newVal, oldVal) {
 			localStorageService.set('version', newVal);
+		});
+
+		$scope.$watch(function() {
+			return self.notif_time;
+		}, function(newVal, oldVal) {
+			localStorageService.set('notif_time', newVal);
+			turtleFact.set_notif_time(self.notif_time);
+		});
+
+		$scope.$watch(function() {
+			return self.notif_sound;
+		}, function(newVal, oldVal) {
+			localStorageService.set('notif_sound', newVal);
+			turtleFact.set_notif_sound(self.notif_sound);
 		});
 	}
 })();

@@ -9,12 +9,16 @@
 		var id;
 		var my_time = get_current_time();
 		var notifications = [];
+		var notif_time, notif_sound;
+		var notif_audio = new Audio('sounds/notification.mp3');
 
 		var services = {
 			set_id: set_id,
 			get_ttimes: get_ttimes,
 			get_cal: get_cal,
-			example_notification: example_notification
+			example_notification: example_notification,
+			set_notif_time: set_notif_time,
+			set_notif_sound: set_notif_sound
 		};
 
 		return services;
@@ -100,21 +104,24 @@
 				icon: 'favicon.ico'
 			};
 			var time_until;
-			var TIME_BEFORE = 1000 * 60 * 10;
-
 
 			for (var i=0; i<ttimes.length; i++) {
 				if (now.isAfter(ttimes[i]))
 					continue;
 
 				time_until = ttimes[i].format('x') - now.format('x');
-				time_until -= TIME_BEFORE;
+				time_until -= notif_time;
+				console.log('time_until = ', time_until);
+				if (time_until < 0)
+					continue;
 
 				if (notifications[i] !== undefined)
 					clearTimeout(notifications[i]);
 
 				notifications[i] = setTimeout(function() {
 					var instance = new Notification("OPTC Turtle Time", options);
+					if (notif_sound)
+						notif_audio.play();
 				}, time_until);
 			}
 		}
@@ -126,6 +133,16 @@
 			};
 
 			var instance = new Notification("OPTC Turtle Time", options);
+			if (notif_sound)
+				notif_audio.play();
+		}
+
+		function set_notif_time(minutes) {
+			notif_time = 1000 * 60 * minutes;
+		}
+
+		function set_notif_sound(sound) {
+			notif_sound = sound;
 		}
 
 	}

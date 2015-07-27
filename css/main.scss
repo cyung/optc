@@ -179,3 +179,18 @@ iframe {
 		}
 	}
 }
+
+.btn-notif {
+	margin: 5px 0 5px 0 !important;
+}
+.settings-notif {
+	* {
+		text-align: center;
+	}
+	div:first-child {
+		margin-bottom: 5px;
+	}
+	div>button {
+		margin-left: 20px;
+	}
+}

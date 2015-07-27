@@ -50,27 +50,27 @@
 	<body ng-app="app" ng-controller="LocaleCtrl as locale" ng-cloak ng-click="collapse=false">
 
 		<nav class="navbar navbar-default" ng-controller="NavbarCtrl" ng-click="$event.stopPropagation()">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" ng-click="isCollapsed=!isCollapsed">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span> 
-						</button>
-					</div>
-					<div class="navbar-collapse" collapse="isCollapsed">
-						<ul class="nav navbar-nav">
-							<li class="active"><a href="index.html">{{ 'NAV_TURTLE' | translate }}</a></li>
-							<li><a href="barrel.html">{{ 'NAV_BARREL' | translate }}</a></li>
-							<li><a href="event.html">{{ 'NAV_EVENT' | translate }}</a></li>
-							<li><a href="contact.html">Contact Me</a></li>
-							<li id="settings"><a href="settings.html">{{ 'NAV_SETTINGS' | translate }}</a></li>
-						</ul>
-						<div class="language-picker nav pull-right">
-							<pls id="pls1" items="plsModel.languages" open-mode="click" show-flag="true" selected-lang="{{locale.flag}}" language-changed-callback="onLanguageChanged(lang)"></pls>
-						</div>
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" ng-click="isCollapsed2=!isCollapsed2">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span> 
+					</button>
+				</div>
+				<div class="navbar-collapse" collapse="isCollapsed2">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="index.html">{{ 'NAV_TURTLE' | translate }}</a></li>
+						<li><a href="barrel.html">{{ 'NAV_BARREL' | translate }}</a></li>
+						<li><a href="event.html">{{ 'NAV_EVENT' | translate }}</a></li>
+						<li><a href="contact.html">Contact Me</a></li>
+						<li id="settings"><a href="settings.html">{{ 'NAV_SETTINGS' | translate }}</a></li>
+					</ul>
+					<div class="language-picker nav pull-right">
+						<pls id="pls1" items="plsModel.languages" open-mode="click" show-flag="true" selected-lang="{{locale.flag}}" language-changed-callback="onLanguageChanged(lang)"></pls>
 					</div>
 				</div>
+			</div>
 		</nav>
 
 		<div class="jumbotron">
@@ -105,15 +105,27 @@
 					</div>
 				</div>
 
+				<button class="btn btn-info btn-notif" ng-click="isCollapsed1 = !isCollapsed1" ng-show="turtle.notif_support">Notification settings</button>
+				<div collapse="isCollapsed1" ng-init="isCollapsed1 = true" ng-show="turtle.notif_support" class="settings-notif">
+					<div>
+						<span>Minutes before event: </span>
+						<input type="number" min="0" max="999" class="input-id" ng-model="turtle.notif_time" select-on-click>
+					</div>
+					<div>
+						<input type="checkbox" name="sound" ng-model="turtle.notif_sound"> Play sound
+						<button class="btn btn-sm btn-default" ng-click="turtle.example_notification()">Test</button>
+					</div>
+				</div>
+
 				<p ng-show="!turtle.notif_support">Notifications not supported.</p>
-				<h2 ng-show="turtle.version()">Read the information below and leave feedback <a href="contact.html">here.</a></h2>
+				<h2 ng-show="turtle.version()">Read the information below and leave feedback <a href="contact.html">here</a>.</h2>
+
 				<h2>FAQ:</h2>
 				<h3>Will you keep updating it?</h3>
 				<p>This site <strong>automatically updates</strong> itself. Source code <a href="https://github.com/cyung/optc">here</a>.</p>
 
-
-				<button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Notifications/Calendar</button>
-				<div collapse="isCollapsed" ng-init="isCollapsed = true">
+				<button class="btn btn-info" ng-click="isCollapsed2 = !isCollapsed2">Notifications/Calendar Information</button>
+				<div collapse="isCollapsed2" ng-init="isCollapsed2 = true">
 					<h2>JPN button disabled?</h2>
 					<p>It's not implemented yet. I rewrote all my code from scratch to fix things.</p>
 					<h2>When will notifications show up?</h2>
