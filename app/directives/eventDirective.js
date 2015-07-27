@@ -177,7 +177,7 @@ angular.module('app')
 			template: function (elem, attrs) {
 				var day = moment().utc().startOf('day');
 				if (JSON.parse(attrs.global))
-					day.add(12, 'hours');
+					day.add(8, 'hours');
 				var now = moment();
 				if (day.isBefore(now))
 					day.add(1, 'days');
