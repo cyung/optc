@@ -84,10 +84,10 @@
 					</div>
 					<p>{{'TT_TIMEZONE' | translate}} {{turtle.timezone}}</p>
 					<div class="btn-group game-version ttc-version">
-						<label class="btn btn-default" ng-model="turtle.global" btn-radio="'global'">GLOBAL</label>
-						<label class="btn btn-default" ng-model="turtle.global" btn-radio="'jpn'" disabled>JPN</label>
+						<label class="btn btn-default" ng-model="turtle.version" btn-radio="'global'">GLOBAL</label>
+						<label class="btn btn-default" ng-model="turtle.version" btn-radio="'jpn'">JPN</label>
 					</div>
-					<div class="ttime-global" ng-show="turtle.version()">
+					<div class="ttime-global">
 						<turtle-beta 
 							class="ttime-day"
 							military="turtle.military"
@@ -95,6 +95,7 @@
 							numid="turtle.id"
 							ng-repeat="t in turtle.range(4) track by $index"
 							locale="locale.locale"
+							version="turtle.version"
 							>
 						</turtle-beta>
 					</div>
@@ -105,8 +106,8 @@
 					</div>
 				</div>
 
-				<button class="btn btn-info btn-notif" ng-click="isCollapsed1 = !isCollapsed1" ng-show="turtle.notif_support">{{'TT_NOTIFICATION' | translate}}</button>
-				<div collapse="isCollapsed1" ng-init="isCollapsed1 = true" ng-show="turtle.notif_support" class="settings-notif">
+				<button class="btn btn-info btn-notif" ng-click="isCollapsed1 = !isCollapsed1" ng-show="turtle.notif_support" ng-init="isCollapsed1 = true">{{'TT_NOTIFICATION' | translate}}</button>
+				<div collapse="isCollapsed1" ng-show="turtle.notif_support" class="settings-notif">
 					<div>
 						<span>{{'TT_NOTIF_MINUTES' | translate}}: </span>
 						<input type="number" min="0" max="999" class="input-id" ng-model="turtle.notif_time" select-on-click>
@@ -118,16 +119,14 @@
 				</div>
 
 				<p ng-show="!turtle.notif_support">Notifications not supported.</p>
-				<h2 ng-show="turtle.version()">Read the information below and leave feedback <a href="contact.html">here</a>.</h2>
+				<h2>Read the information below and leave feedback <a href="contact.html">here</a>.</h2>
 
 				<h2>FAQ:</h2>
 				<h3>Will you keep updating it?</h3>
 				<p>This site <strong>automatically updates</strong> itself. Source code <a href="https://github.com/cyung/optc">here</a>.</p>
 
-				<button class="btn btn-info" ng-click="isCollapsed2 = !isCollapsed2">Notifications/Calendar Information</button>
-				<div collapse="isCollapsed2" ng-init="isCollapsed2 = true">
-					<h2>JPN button disabled?</h2>
-					<p>It's not implemented yet. I rewrote all my code from scratch to fix things.</p>
+				<button class="btn btn-info" ng-click="isCollapsed2 = !isCollapsed2" ng-init="isCollapsed2 = true">Notifications/Calendar Information</button>
+				<div collapse="isCollapsed2">
 					<h2>Do I need to leave the page open?</h2>
 					<p>Yes.</p>
 					<h2>Notifications not supported?</h2>
