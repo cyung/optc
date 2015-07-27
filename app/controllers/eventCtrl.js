@@ -18,14 +18,14 @@ angular.module('app')
 		=            COUNTDOWNS            =
 		==================================*/
 		
-		var sugofest = moment.utc("2015-07-15 03:00");
-		console.log(sugofest.format("x"));
+		// var sugofest = moment.utc("2015-07-15 03:00");
+		// console.log(sugofest.format("x"));
 		
 		/*-----  End of COUNTDOWNS  ------*/
 		
 		
 		
-		var day = moment().utc().startOf('day').add(12,'hours');
+		var day = moment().utc().startOf('day').add(8,'hours');
 		var day_jpn = moment().utc().startOf('day');
 		
 		var now = moment();
@@ -49,12 +49,12 @@ angular.module('app')
 
 		calc_hour_string();
 		
-		var drop = ['Loguetown', 'Arlong Park', 'Baratie, Nanohana', 'Syrup Village, Drum Island', 'Orange Town, Little Garden', 'Shell Town, Whiskey Peak', "Alvida's Hideout, Twin Cape"];
-		var stamina = ['Orange Town, Drum Island', 'Shell Town, Little Garden', "Alvida's Hideout, Whiskey Peak", 'Fuschia Village, Twin Cape', 'Loguetown', 'Arlong Park', 'Baratie, Nanohana'];
-		var beli = ['Baratie, Whiskey Peak', 'Syrup Village, Twin Cape', 'Loguetown', 'Arlong Park', 'Baratie, Nanohana', 'Syrup Village, Drum Island', 'Little Garden'];
-		var drop_jpn = ['Loguetown, Jaya', 'Arlong Park, Arbana', 'Baratie, Nanohana, Alabasta', 'Syrup Village, Drum Island', 'Orange Town, Little Garden', 'Shell Town, Whiskey Peak, Ark Maxim', "Alvida's Hideout, Twin Cape"];
-		var stamina_jpn = ['Orange Town, Drum Island', 'Shell Town, Little Garden', "Alvida's Hideout, Whiskey Peak", 'Fuschia Village, Twin Cape, Skypia', 'Loguetown, Jaya', 'Arlong Park, Arbana', 'Baratie, Nanohana, Alabasta'];
-		var beli_jpn = ['Baratie, Whiskey Peak, Ark Maxim', 'Syrup Village, Twin Cape, Skypia', 'Loguetown, Jaya', 'Arlong Park, Arbana', 'Baratie, Nanohana, Alabasta', 'Syrup Village, Drum Island', 'Little Garden'];
+		var drop = ['Loguetown', 'Arlong Park', 'Baratie, Nanohana Rainbase', 'Syrup Village, Drum Island', 'Orange Town, Little Garden', 'Shell Town, Whiskey Peak', "Alvida's Hideout, Twin Cape"];
+		var stamina = ['Orange Town, Drum Island', 'Shell Town, Little Garden', "Alvida's Hideout, Whiskey Peak", 'Fuschia Village, Twin Cape', 'Loguetown', 'Arlong Park', 'Baratie, Nanohana Rainbase'];
+		var beli = ['Baratie, Whiskey Peak', 'Syrup Village, Twin Cape', 'Loguetown', 'Arlong Park', 'Baratie, Nanohana Rainbase', 'Syrup Village, Drum Island', 'Little Garden'];
+		var drop_jpn = ['Loguetown, Jaya', 'Arlong Park, Arbana', 'Baratie, Alabasta', 'Syrup Village, Drum Island', 'Orange Town, Little Garden', 'Shell Town, Whiskey Peak, Ark Maxim', "Alvida's Hideout, Twin Cape"];
+		var stamina_jpn = ['Orange Town, Drum Island', 'Shell Town, Little Garden', "Alvida's Hideout, Whiskey Peak", 'Fuschia Village, Twin Cape, Skypia', 'Loguetown, Jaya', 'Arlong Park, Arbana', 'Baratie, Alabasta'];
+		var beli_jpn = ['Baratie, Whiskey Peak, Ark Maxim', 'Syrup Village, Twin Cape, Skypia', 'Loguetown, Jaya', 'Arlong Park, Arbana', 'Baratie, Alabasta', 'Syrup Village, Drum Island', 'Little Garden'];
 		
 		self.version = function() {
 			return (self.global === 'global');
