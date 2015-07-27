@@ -21,18 +21,11 @@
 		}
 		
 		function note_permission() {
-			// check if supported
+			// if not supported, show mesage
 			if (!("Notification" in window))
 				self.notif_support = false;
-
-			// check permission
-			else if (Notification.permission !== 'denied') {
-				Notification.requestPermission(function (permission) {
-					// display sample notification if permission granted
-					if (permission === "granted")
-						var notification = new Notification("test notification");
-				});
-			}
+			else
+				Notification.requestPermission();
 		}
 
 		self.get_cal = function() {
