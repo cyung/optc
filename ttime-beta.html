@@ -60,7 +60,7 @@
 					</div>
 					<div class="navbar-collapse" collapse="isCollapsed">
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="ttime-beta.html">{{ 'NAV_TURTLE' | translate }}</a></li>
+							<li class="active"><a href="index.html">{{ 'NAV_TURTLE' | translate }}</a></li>
 							<li><a href="barrel.html">{{ 'NAV_BARREL' | translate }}</a></li>
 							<li><a href="event.html">{{ 'NAV_EVENT' | translate }}</a></li>
 							<li><a href="contact.html">Contact Me</a></li>
@@ -105,6 +105,8 @@
 					</div>
 				</div>
 
+				<p ng-show="!turtle.notif_support">Notifications not supported.</p>
+				<h2 ng-show="turtle.version()">Read the information below and leave feedback <a href="contact.html">here.</a></h2>
 				<h2>FAQ:</h2>
 				<h3>Will you keep updating it?</h3>
 				<p>This site <strong>automatically updates</strong> itself. Source code <a href="https://github.com/cyung/optc">here</a>.</p>
@@ -112,14 +114,16 @@
 
 				<button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Notifications/Calendar</button>
 				<div collapse="isCollapsed" ng-init="isCollapsed = true">
+					<h2>JPN button disabled?</h2>
+					<p>It's not implemented yet. I rewrote all my code from scratch to fix things.</p>
 					<h2>When will notifications show up?</h2>
 					<p>They will appear 10 minutes before the event. Click <a ng-click="turtle.example_notification()"><strong>here</strong></a> to see an example.</p>
 					<h2>Do I need to leave the page open?</h2>
 					<p>Yes.</p>
 					<h2>Notifications not supported?</h2>
-					<p>iOS does not support notifications or calendars through a browser.</p>
-					<h2></h2>
-					<p></p>
+					<p>Notifications do not work via browser on iOS/Android. I will need to release a native app for that.</p>
+					<h2>Calendar not working on iOS?</h2>
+					<p>Calendars cannot be directly imported from a browser on iOS. You can get around this by downloading it on your computer and emailing it to yourself.</p>
 				</div>
 
 				<hr>
