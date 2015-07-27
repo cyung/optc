@@ -16,21 +16,22 @@
 			self.global = localStorageService.get('version');
 			if (self.global === null)
 				self.global = 'global';
+
+			self.notif_support = true;
 		}
 		
 		function note_permission() {
 			// check if supported
 			if (!("Notification" in window))
-				alert("This browser does not support notifications.");
-			// check permission
-			else if (Notification.permission !== 'denied') {
+				self.notif_support = false;
 
+			// check permission
+			else if (Notification.permission === 'denied') {
 				Notification.requestPermission(function (permission) {
 					// display sample notification if permission granted
 					if (permission === "granted")
 						var notification = new Notification("test notification");
 				});
-				
 			}
 		}
 

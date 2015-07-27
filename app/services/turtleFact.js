@@ -8,6 +8,7 @@
 		var ttimes = [];
 		var id;
 		var my_time = get_current_time();
+		var notifications = [];
 
 		var services = {
 			set_id: set_id,
@@ -47,6 +48,8 @@
 					i++;
 				second_time = !second_time;
 			}
+
+			set_notifications();
 		}
 
 		function calc_ttime(week_num, second_time) {
@@ -87,6 +90,32 @@
 			}
 
 			cal.download('turtle_time', '.ics');
+		}
+
+		function set_notifications() {
+			var now = moment();
+			var options = {
+				body: '10 minutes till Turtle Time!',
+				icon: 'favicon.ico'
+			};
+			var time_until;
+			var TIME_BEFORE = 1000 * 60 * 10;
+
+
+			for (var i=0; i<ttimes.length; i++) {
+				if (now.isAfter(ttimes[i]))
+					continue;
+
+				time_until = ttimes[i].format('x') - now.format('x');
+				time_until -= TIME_BEFORE;
+
+				if (notifications[i] !== undefined)
+					clearTimeout(notifications[i]);
+
+				notifications[i] = setTimeout(function() {
+					var instance = new Notification("OPTC Turtle Time", options);
+				}, time_until);
+			}
 		}
 
 	}
