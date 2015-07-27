@@ -80,7 +80,7 @@
 					<div class="id">
 						<span>{{'TT_DIGIT' | translate}}</span>
 						<input type="number" min="0" max="9" ng-model="turtle.id" class="input-id" select-on-click>
-						<input class="digit" type="checkbox" name="militaryTime" ng-model="turtle.military">{{'TT_FORMAT' | translate}}
+						<input class="digit" type="checkbox" name="militaryTime" ng-model="turtle.military"><span>{{'TT_FORMAT' | translate}}</span>
 					</div>
 					<p>{{'TT_TIMEZONE' | translate}} {{turtle.timezone}}</p>
 					<div class="btn-group game-version ttc-version">
@@ -100,20 +100,20 @@
 					</div>
 					<div class="add-to-calendar">
 						<a class="btn btn-default" ng-click="turtle.get_cal()">
-							{{'TT_ADD_CALENDAR' | translate }}
+							{{'TT_ADD_CALENDAR' | translate}}
 						</a>
 					</div>
 				</div>
 
-				<button class="btn btn-info btn-notif" ng-click="isCollapsed1 = !isCollapsed1" ng-show="turtle.notif_support">Notification settings</button>
+				<button class="btn btn-info btn-notif" ng-click="isCollapsed1 = !isCollapsed1" ng-show="turtle.notif_support">{{'TT_NOTIFICATION' | translate}}</button>
 				<div collapse="isCollapsed1" ng-init="isCollapsed1 = true" ng-show="turtle.notif_support" class="settings-notif">
 					<div>
-						<span>Minutes before event: </span>
+						<span>{{'TT_NOTIF_MINUTES' | translate}}: </span>
 						<input type="number" min="0" max="999" class="input-id" ng-model="turtle.notif_time" select-on-click>
 					</div>
 					<div>
-						<input type="checkbox" name="sound" ng-model="turtle.notif_sound"> Play sound
-						<button class="btn btn-sm btn-default" ng-click="turtle.example_notification()">Test</button>
+						<input type="checkbox" name="sound" ng-model="turtle.notif_sound"> <span>{{'TT_NOTIF_SOUND' | translate}}</span>
+						<button class="btn btn-sm btn-default" ng-click="turtle.example_notification()">{{'TT_NOTIF_EXAMPLE' | translate}}</button>
 					</div>
 				</div>
 
@@ -134,6 +134,8 @@
 					<p>Notifications do not work via browser on iOS/Android. I will need to release a native app for that.</p>
 					<h2>Calendar not working on iOS?</h2>
 					<p>Calendars cannot be directly imported from a browser on iOS. You can get around this by downloading it on your computer and emailing it to yourself.</p>
+					<h2>Your translations in German/Spanish are wrong.</h2>
+					<p>Please tell me the corrections since I'm using Google Translate for these.</p>
 				</div>
 
 				<hr>
