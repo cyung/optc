@@ -157,13 +157,25 @@ iframe {
 =            TTIME BETA            =
 ==================================*/
 
-.ttime-global {
-	margin-top: 10px;
-	ttime-day {
+.ttime-day {
+	display: block;
+
+	&:first-child {
+		margin-top: 20px;
+	}
+
+	&:nth-child(odd) {
 		background-color: #eee;
 	}
-}
 
-.ttime-day>p>span{
-	margin-right: 15px;
+	&:nth-child(2n+0) {
+		margin-bottom: 10px;
+	}
+
+	p {
+		margin-bottom: 0px !important;
+		span {
+			margin-right: 15px;
+		}
+	}
 }

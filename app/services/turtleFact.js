@@ -13,7 +13,8 @@
 		var services = {
 			set_id: set_id,
 			get_ttimes: get_ttimes,
-			get_cal: get_cal
+			get_cal: get_cal,
+			example_notification: example_notification
 		};
 
 		return services;
@@ -116,6 +117,15 @@
 					var instance = new Notification("OPTC Turtle Time", options);
 				}, time_until);
 			}
+		}
+
+		function example_notification() {
+			var options = {
+				body: '10 minutes till Turtle Time!',
+				icon: 'favicon.ico'
+			};
+
+			var instance = new Notification("OPTC Turtle Time", options);
 		}
 
 	}

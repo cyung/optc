@@ -14,7 +14,7 @@
 				index: '=',
 				numid: '='
 			},
-			template: '<div class="ttime-day"><p><span>{{date}}</span><span>{{ttime_format}}</span></p></div>',
+			template: '<p><span>{{date}}</span><span>{{ttime_format}}</span></p>',
 			link: linker
 		}
 

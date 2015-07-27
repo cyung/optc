@@ -35,8 +35,17 @@
 			}
 		}
 
-		self.get_cal = function () {
+		self.test = function() {
+			console.log('TEST');
+		}
+
+		self.get_cal = function() {
 			turtleFact.get_cal();
+		};
+
+		self.example_notification = function() {
+			console.log('clicked');
+			turtleFact.example_notification();
 		};
 
 		self.version = function() {

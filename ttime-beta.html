@@ -74,9 +74,9 @@
 		</nav>
 
 		<div class="jumbotron">
-			<div class="container">
+			<div class="container" ng-controller="TurtleCtrlBeta as turtle">
 				<h1 class="page-title">{{'TT_TITLE' | translate}}</h1>
-				<div ng-controller="TurtleCtrlBeta as turtle">
+				<div>
 					<div class="id">
 						<span>{{'TT_DIGIT' | translate}}</span>
 						<input type="number" min="0" max="9" ng-model="turtle.id" class="input-id" select-on-click>
@@ -85,10 +85,11 @@
 					<p>{{'TT_TIMEZONE' | translate}} {{turtle.timezone}}</p>
 					<div class="btn-group game-version ttc-version">
 						<label class="btn btn-default" ng-model="turtle.global" btn-radio="'global'">GLOBAL</label>
-						<label class="btn btn-default" ng-model="turtle.global" btn-radio="'jpn'">JPN</label>
+						<label class="btn btn-default" ng-model="turtle.global" btn-radio="'jpn'" disabled>JPN</label>
 					</div>
 					<div class="ttime-global" ng-show="turtle.version()">
 						<turtle-beta 
+							class="ttime-day"
 							military="turtle.military"
 							index="$index"
 							numid="turtle.id"
@@ -103,6 +104,32 @@
 						</a>
 					</div>
 				</div>
+
+				<h2>FAQ:</h2>
+				<h3>Will you keep updating it?</h3>
+				<p>This site <strong>automatically updates</strong> itself. Source code <a href="https://github.com/cyung/optc">here</a>.</p>
+
+
+				<button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Notifications/Calendar</button>
+				<div collapse="isCollapsed" ng-init="isCollapsed = true">
+					<h2>When will notifications show up?</h2>
+					<p>They will appear 10 minutes before the event. Click <a ng-click="turtle.example_notification()"><strong>here</strong></a> to see an example.</p>
+					<h2>Do I need to leave the page open?</h2>
+					<p>Yes.</p>
+					<h2>Notifications not supported?</h2>
+					<p>iOS does not support notifications or calendars through a browser.</p>
+					<h2></h2>
+					<p></p>
+				</div>
+
+				<hr>
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+				">
+				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
 			</div>
 		</div>
 

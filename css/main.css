@@ -105,12 +105,17 @@ iframe {
 /*==================================
 =            TTIME BETA            =
 ==================================*/
-.ttime-global {
-  margin-top: 10px; }
-  .ttime-global ttime-day {
+.ttime-day {
+  display: block; }
+  .ttime-day:first-child {
+    margin-top: 20px; }
+  .ttime-day:nth-child(odd) {
     background-color: #eee; }
-
-.ttime-day > p > span {
-  margin-right: 15px; }
+  .ttime-day:nth-child(2n+0) {
+    margin-bottom: 10px; }
+  .ttime-day p {
+    margin-bottom: 0px !important; }
+    .ttime-day p span {
+      margin-right: 15px; }
 
 /*# sourceMappingURL=main.css.map */
