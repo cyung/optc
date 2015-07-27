@@ -26,7 +26,7 @@
 				self.notif_support = false;
 
 			// check permission
-			else if (Notification.permission === 'denied') {
+			else if (Notification.permission !== 'denied') {
 				Notification.requestPermission(function (permission) {
 					// display sample notification if permission granted
 					if (permission === "granted")
