@@ -99,7 +99,7 @@
 							>
 						</turtle-beta>
 					</div>
-					<div class="add-to-calendar">
+					<div class="add-to-calendar" ng-show="!turtle.iOS">
 						<a class="btn btn-default" ng-click="turtle.get_cal()">
 							{{'TT_ADD_CALENDAR' | translate}}
 						</a>
@@ -118,8 +118,7 @@
 					</div>
 				</div>
 
-				<p ng-show="!turtle.notif_support">Notifications not supported.</p>
-				<h2>Read the information below and leave feedback <a href="contact.html">here</a>.</h2>
+				<h2>Incorrect? <a href="contact.html">Let me know.</a></h2>
 
 				<h2>FAQ:</h2>
 				<h3>Will you keep updating it?</h3>
