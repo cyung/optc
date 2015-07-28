@@ -192,10 +192,12 @@
 
 		function set_notif_time(minutes) {
 			notif_time = 1000 * 60 * minutes;
+			set_notifications();
 		}
 
 		function set_notif_sound(sound) {
 			notif_sound = sound;
+			set_notifications();
 		}
 
 	}
