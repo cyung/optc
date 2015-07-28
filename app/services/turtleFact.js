@@ -153,8 +153,9 @@
 
 		function set_notifications() {
 			var now = moment();
+			var minutes = notif_time / 1000 / 60;
 			var options = {
-				body: '10 minutes till Turtle Time!',
+				body: minutes + ' minutes till Turtle Time!',
 				icon: 'favicon.ico'
 			};
 			var time_until;
