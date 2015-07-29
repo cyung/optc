@@ -109,7 +109,7 @@
 			else {
 				var day_num = week_num;
 				var monday = jpn_monday;
-				offset = day_num + my_time.isoWeek()*2 + 2;
+				offset = day_num + my_time.isoWeek()*2 + 3;
 				if (!monday)
 					offset += 1;
 				offset = offset % 5;
