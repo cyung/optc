@@ -180,8 +180,9 @@
 		}
 
 		function example_notification() {
+			var minutes = notif_time / 1000 / 60;
 			var options = {
-				body: '10 minutes till Turtle Time!',
+				body: minutes + ' minutes till Turtle Time!',
 				icon: 'favicon.ico'
 			};
 
