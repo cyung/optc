@@ -58,7 +58,7 @@
 					<span class="icon-bar"></span> 
 					</button>
 				</div>
-				<div class="navbar-collapse" collapse="isCollapsed">
+				<div class="navbar-collapse init" collapse="isCollapsed">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="index.html">{{ 'NAV_TURTLE' | translate }}</a></li>
 						<li><a href="barrel.html">{{ 'NAV_BARREL' | translate }}</a></li>
@@ -107,7 +107,7 @@
 				</div>
 
 				<button class="btn btn-info btn-notif" ng-click="isCollapsed1 = !isCollapsed1" ng-show="turtle.notif_support" ng-init="isCollapsed1 = true">{{'TT_NOTIFICATION' | translate}}</button>
-				<div collapse="isCollapsed1" ng-show="turtle.notif_support" class="settings-notif">
+				<div collapse="isCollapsed1" ng-show="turtle.notif_support" class="settings-notif init">
 					<div>
 						<span>{{'TT_NOTIF_MINUTES' | translate}}: </span>
 						<input type="number" min="0" max="999" class="input-id" ng-model="turtle.notif_time" select-on-click>
@@ -125,7 +125,7 @@
 				<p>This site <strong>automatically updates</strong> itself. Source code <a href="https://github.com/cyung/optc">here</a>.</p>
 
 				<button class="btn btn-info" ng-click="isCollapsed2 = !isCollapsed2" ng-init="isCollapsed2 = true">Notifications/Calendar Information</button>
-				<div collapse="isCollapsed2">
+				<div collapse="isCollapsed2" class="init">
 					<h2>Do I need to leave the page open?</h2>
 					<p>Yes.</p>
 					<h2>Notifications not supported?</h2>

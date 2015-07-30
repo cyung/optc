@@ -27,7 +27,6 @@ angular.module('app')
 		
 		var day = moment().utc().startOf('day').add(8,'hours');
 		var day_jpn = moment().utc().startOf('day').add(15, 'hours');
-		console.log(day_jpn);
 		
 		var now = moment();
 		if (day.isAfter(now))
