@@ -11,6 +11,8 @@
 		var notif_time, notif_sound;
 		var notif_audio = new Audio('sounds/notification.mp3');
 		var version, jpn_monday;
+		var hotfix = false;
+		var jpn_hotfix = false;
 
 		var services = {
 			set_id: set_id,
@@ -39,28 +41,36 @@
 		function get_current_time() {
 			var end;
 			if (version === 'global') {
-				my_time = moment.utc().startOf('isoWeek').add(13, 'hours').local();
-				end = my_time.clone().add(18, 'hours');
-				if (moment().isAfter(end))
-					my_time.add(1, 'week');
+				if (!hotfix) {
+					my_time = moment.utc().startOf('isoWeek').add(13, 'hours');
+					end = my_time.clone().add(18, 'hours');
+					if (moment().isAfter(end))
+						my_time.add(1, 'week');
+				}
+				else
+					my_time = moment.utc('2015-08-07 13:00');
 			}
 			else {
-				my_time = moment.utc().startOf('isoWeek');
-				jpn_monday = true;
-
-				var now = moment();
-				end = my_time.clone().add(18, 'hours');
-				
-				if (now.isAfter(end)) {
-					my_time.add(4, 'days');
-					end.add(4, 'days');
-					jpn_monday = false;
-				}
-
-				if (now.isAfter(end)) {
-					my_time.add(3, 'days');
+				if (!jpn_hotfix) {
+					my_time = moment.utc().startOf('isoWeek');
 					jpn_monday = true;
+
+					var now = moment();
+					end = my_time.clone().add(18, 'hours');
+					
+					if (now.isAfter(end)) {
+						my_time.add(4, 'days');
+						end.add(4, 'days');
+						jpn_monday = false;
+					}
+
+					if (now.isAfter(end)) {
+						my_time.add(3, 'days');
+						jpn_monday = true;
+					}
 				}
+				else 
+					my_time = moment.utc('2015-08-07 00:00');
 			}
 		}
 
@@ -69,6 +79,7 @@
 			var i = 0;
 			var second_time = false;
 
+			// if jpn, double for twice a week and treat as num_days
 			if (version !== 'global')
 				num_weeks *= 2;
 
@@ -89,39 +100,68 @@
 		function calc_ttime(week_num, second_time) {
 			var weekly_order = [0,1,2,3,4];
 			var ttime = my_time.clone();
-			var offset, i;
+			var offset, i, day_num, day_offset, monday;
 
 			if (version === 'global') {
-				offset = week_num + my_time.isoWeek() + 3;
+					if (!hotfix) {
+					offset = week_num + my_time.isoWeek() + 3;
 
-				offset = offset % 5;
+					offset = offset % 5;
 
-				for (i=0; i<offset; i++)
-					weekly_order.unshift(weekly_order.pop());
+					for (i=0; i<offset; i++)
+						weekly_order.unshift(weekly_order.pop());
 
-				for (i=0; i<week_num; i++)
-					ttime.add(1, 'week');
+					for (i=0; i<week_num; i++)
+						ttime.add(1, 'week');
+
+				}
+				else {
+					day_num = week_num;
+					day_offset = [0,1,2,1,1];
+
+					offset = week_num + 0;
+
+					for (i=0; i<offset; i++)
+						weekly_order.unshift(weekly_order.pop());
+
+					for (i=0; i<day_num; i++)
+						ttime.add(day_offset[i], 'days');
+				}
 
 				ttime.add(weekly_order[id]*2, 'hours');
 				if (second_time)
 					ttime.add(10,'hours');
 			}
 			else {
-				var day_num = week_num;
-				var monday = jpn_monday;
-				offset = day_num + my_time.isoWeek()*2 + 3;
-				if (!monday)
-					offset += 1;
-				offset = offset % 5;
-				for (i=0; i<offset; i++)
-					weekly_order.unshift(weekly_order.pop());
+				day_num = week_num;
+				monday = jpn_monday;
 
-				for (i=0; i<day_num; i++) {
-					if (monday)
-						ttime.add(4, 'days');
-					else
-						ttime.add(3, 'days');
-					monday = !monday;
+				if (!jpn_hotfix) {
+					offset = day_num + my_time.isoWeek()*2 + 3;
+					if (!monday)
+						offset += 1;
+					offset = offset % 5;
+					for (i=0; i<offset; i++)
+						weekly_order.unshift(weekly_order.pop());
+
+					for (i=0; i<day_num; i++) {
+						if (monday)
+							ttime.add(4, 'days');
+						else
+							ttime.add(3, 'days');
+						monday = !monday;
+					}
+				}
+				else {
+					day_offset = [0,3,4,3,4,3];
+
+					offset = day_num + 0;
+
+					for (i=0; i<offset; i++)
+						weekly_order.unshift(weekly_order.pop());
+
+					for (i=0; i<day_num; i++)
+						ttime.add(day_offset[i], 'days');
 				}
 
 				ttime.add(weekly_order[id]*3, 'hours');
@@ -200,6 +240,5 @@
 			notif_sound = sound;
 			set_notifications();
 		}
-
 	}
 })();
