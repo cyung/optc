@@ -91,7 +91,7 @@ angular.module('app')
 				day_stamina = stamina[offset];
 				day_beli = beli[offset];
 			} else {
-				offset = (day_num_jpn + day_offset + 3) % 7;
+				offset = (day_num_jpn + day_offset + 2) % 7;
 				day_drop = drop_jpn[offset];
 				day_stamina = stamina_jpn[offset];
 				day_beli = beli_jpn[offset];
