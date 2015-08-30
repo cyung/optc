@@ -12,7 +12,8 @@
 				military: '=',
 				locale: '=',
 				index: '=',
-				numid: '='
+				numid: '=',
+				version: '='
 			},
 			template: '<p><span>{{date}}</span><span>{{ttime_format}}</span></p>',
 			link: linker
@@ -50,6 +51,10 @@
 			});
 
 			scope.$watch('locale', function(newVal, oldVal) {
+				update_times();
+			});
+
+			scope.$watch('version', function(newVal, oldVal) {
 				update_times();
 			});
 		}

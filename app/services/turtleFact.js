@@ -6,36 +6,72 @@
 
 	function turtleFact() {
 		var ttimes = [];
-		var id;
-		var my_time = get_current_time();
+		var id, my_time;
 		var notifications = [];
+		var notif_time, notif_sound;
+		var notif_audio = new Audio('sounds/notification.mp3');
+		var version, jpn_monday;
+		var hotfix = false;
+		var jpn_hotfix = false;
 
 		var services = {
 			set_id: set_id,
 			get_ttimes: get_ttimes,
 			get_cal: get_cal,
-			example_notification: example_notification
+			example_notification: example_notification,
+			set_notif_time: set_notif_time,
+			set_notif_sound: set_notif_sound,
+			set_version: set_version
 		};
 
 		return services;
 
 		function set_id(i) {
-			id = i;
+			id = i % 5;
 			get_ttimes();
 		}
 
 		function get_ttimes() {
+			get_current_time();
 			ttimes = [];
 			calc_ttimes_all();
 			return ttimes;
 		}
 
 		function get_current_time() {
-			var my_time = moment.utc().startOf('isoWeek').add(13, 'hours').local();
-			var end = my_time.clone().add(18, 'hours');
-			if (moment().isAfter(end))
-				my_time.add(1, 'week');
-			return my_time;
+			var end;
+			if (version === 'global') {
+				if (!hotfix) {
+					my_time = moment.utc().startOf('isoWeek').add(13, 'hours');
+					end = my_time.clone().add(18, 'hours');
+					if (moment().isAfter(end))
+						my_time.add(1, 'week');
+				}
+				else
+					my_time = moment.utc('2015-08-07 13:00');
+			}
+			else {
+				if (!jpn_hotfix) {
+					my_time = moment.utc().startOf('isoWeek');
+					jpn_monday = true;
+
+					var now = moment();
+					end = my_time.clone().add(18, 'hours');
+					
+					if (now.isAfter(end)) {
+						my_time.add(4, 'days');
+						end.add(4, 'days');
+						jpn_monday = false;
+					}
+
+					if (now.isAfter(end)) {
+						my_time.add(3, 'days');
+						jpn_monday = true;
+					}
+				}
+				else 
+					my_time = moment.utc('2015-08-07 00:00');
+			}
 		}
 
 		function calc_ttimes_all() {
@@ -43,11 +79,19 @@
 			var i = 0;
 			var second_time = false;
 
+			// if jpn, double for twice a week and treat as num_days
+			if (version !== 'global')
+				num_weeks *= 2;
+
 			while (i<num_weeks) {
 				ttimes.push(calc_ttime(i, second_time));
-				if (second_time)
+				if (version === 'global'){
+					if (second_time)
+						i++;
+					second_time = !second_time;
+				}
+				else
 					i++;
-				second_time = !second_time;
 			}
 
 			set_notifications();
@@ -56,24 +100,78 @@
 		function calc_ttime(week_num, second_time) {
 			var weekly_order = [0,1,2,3,4];
 			var ttime = my_time.clone();
-			var offset = week_num + my_time.isoWeek() + 3;
+			var offset, i, day_num, day_offset, monday;
 
-			offset = offset % 5;
+			if (version === 'global') {
+					if (!hotfix) {
+					offset = week_num + my_time.isoWeek() + 3;
 
-			for (var i=0; i < offset; i++)
-				weekly_order.unshift(weekly_order.pop());
+					offset = offset % 5;
 
-			for (i=0; i < week_num; i++)
-				ttime.add(1, 'week');
+					for (i=0; i<offset; i++)
+						weekly_order.unshift(weekly_order.pop());
 
-			if (id>4)
-				id -=5;
+					for (i=0; i<week_num; i++)
+						ttime.add(1, 'week');
 
-			ttime.add(weekly_order[id]*2, 'hours');
-			if (second_time)
-				ttime.add(10,'hours');
+				}
+				else {
+					day_num = week_num;
+					day_offset = [0,1,2,1,1];
+
+					offset = week_num + 0;
+
+					for (i=0; i<offset; i++)
+						weekly_order.unshift(weekly_order.pop());
+
+					for (i=0; i<day_num; i++)
+						ttime.add(day_offset[i], 'days');
+				}
+
+				ttime.add(weekly_order[id]*2, 'hours');
+				if (second_time)
+					ttime.add(10,'hours');
+			}
+			else {
+				day_num = week_num;
+				monday = jpn_monday;
+
+				if (!jpn_hotfix) {
+					offset = day_num + my_time.isoWeek()*2 + 3;
+					if (!monday)
+						offset += 1;
+					offset = offset % 5;
+					for (i=0; i<offset; i++)
+						weekly_order.unshift(weekly_order.pop());
+
+					for (i=0; i<day_num; i++) {
+						if (monday)
+							ttime.add(4, 'days');
+						else
+							ttime.add(3, 'days');
+						monday = !monday;
+					}
+				}
+				else {
+					day_offset = [0,3,4,3,4,3];
+
+					offset = day_num + 0;
+
+					for (i=0; i<offset; i++)
+						weekly_order.unshift(weekly_order.pop());
+
+					for (i=0; i<day_num; i++)
+						ttime.add(day_offset[i], 'days');
+				}
+
+				ttime.add(weekly_order[id]*3, 'hours');
+			}
 
 			return ttime;
+		}
+
+		function set_version(v) {
+			version = v;
 		}
 
 		function get_cal() {
@@ -95,38 +193,52 @@
 
 		function set_notifications() {
 			var now = moment();
+			var minutes = notif_time / 1000 / 60;
 			var options = {
-				body: '10 minutes till Turtle Time!',
+				body: minutes + ' minutes till Turtle Time!',
 				icon: 'favicon.ico'
 			};
 			var time_until;
-			var TIME_BEFORE = 1000 * 60 * 10;
-
 
 			for (var i=0; i<ttimes.length; i++) {
 				if (now.isAfter(ttimes[i]))
 					continue;
 
 				time_until = ttimes[i].format('x') - now.format('x');
-				time_until -= TIME_BEFORE;
-
+				time_until -= notif_time;
+				if (time_until < 0 || isNaN(time_until))
+					continue;
 				if (notifications[i] !== undefined)
 					clearTimeout(notifications[i]);
 
 				notifications[i] = setTimeout(function() {
 					var instance = new Notification("OPTC Turtle Time", options);
+					if (notif_sound)
+						notif_audio.play();
 				}, time_until);
 			}
 		}
 
 		function example_notification() {
+			var minutes = notif_time / 1000 / 60;
 			var options = {
-				body: '10 minutes till Turtle Time!',
+				body: minutes + ' minutes till Turtle Time!',
 				icon: 'favicon.ico'
 			};
 
 			var instance = new Notification("OPTC Turtle Time", options);
+			if (notif_sound)
+				notif_audio.play();
 		}
 
+		function set_notif_time(minutes) {
+			notif_time = 1000 * 60 * minutes;
+			set_notifications();
+		}
+
+		function set_notif_sound(sound) {
+			notif_sound = sound;
+			set_notifications();
+		}
 	}
 })();

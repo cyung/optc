@@ -26,7 +26,7 @@ angular.module('app')
 		
 		
 		var day = moment().utc().startOf('day').add(8,'hours');
-		var day_jpn = moment().utc().startOf('day');
+		var day_jpn = moment().utc().startOf('day').add(2, 'hours');
 		
 		var now = moment();
 		if (day.isAfter(now))
@@ -137,7 +137,7 @@ angular.module('app')
 			var local = day.clone().local();
 			var local_jpn = day_jpn.clone().local();
 			var local_end = local.clone().add(23, 'hours').add(59, 'minutes');
-			var local_end_jpn = local_jpn.clone().add(23, 'hours').add(59, 'minutes');
+			var local_end_jpn = local_jpn.clone().add(12, 'hours');
 			var hour_start = local.format('HH:mm');
 			var hour_start_jpn = local_jpn.format('HH:mm');
 			var hour_end = local_end.format('HH:mm');
