@@ -49,9 +49,9 @@ angular.module('app')
 
 		calc_hour_string();
 		
-		var drop = ['Loguetown', 'Arlong Park, Alubarna', 'Baratie, Nanohana Rainbase', 'Syrup Village, Drum Island', 'Orange Town, Little Garden', 'Shell Town, Whiskey Peak', "Alvida's Hideout, Twin Cape"];
-		var stamina = ['Orange Town, Drum Island', 'Shell Town, Little Garden', "Alvida's Hideout, Whiskey Peak", 'Fuschia Village, Twin Cape', 'Loguetown', 'Arlong Park, Alubarna', 'Baratie, Nanohana Rainbase'];
-		var beli = ['Baratie, Whiskey Peak', 'Syrup Village, Twin Cape', 'Loguetown', 'Arlong Park, Alubarna', 'Baratie, Nanohana Rainbase', 'Syrup Village, Drum Island', 'Little Garden'];
+		var drop = ['Loguetown', 'Arlong Park', 'Baratie, Nanohana Rainbase', 'Syrup Village, Drum Island', 'Orange Town, Little Garden', 'Shell Town, Whiskey Peak', "Alvida's Hideout, Twin Cape"];
+		var stamina = ['Orange Town, Drum Island', 'Shell Town, Little Garden', "Alvida's Hideout, Whiskey Peak", 'Fuschia Village, Twin Cape', 'Loguetown', 'Arlong Park', 'Baratie, Nanohana Rainbase'];
+		var beli = ['Baratie, Whiskey Peak', 'Syrup Village, Twin Cape', 'Loguetown', 'Arlong Park', 'Baratie, Nanohana Rainbase', 'Syrup Village, Drum Island', 'Little Garden'];
 		var drop_jpn = ['Loguetown, Jaya', 'Arlong Park, Arbana', 'Baratie, Alabasta', 'Syrup Village, Drum Island', 'Orange Town, Little Garden', 'Shell Town, Whiskey Peak, Ark Maxim', "Alvida's Hideout, Twin Cape"];
 		var stamina_jpn = ['Orange Town, Drum Island', 'Shell Town, Little Garden', "Alvida's Hideout, Whiskey Peak", 'Fuschia Village, Twin Cape, Skypia', 'Loguetown, Jaya', 'Arlong Park, Arbana', 'Baratie, Alabasta'];
 		var beli_jpn = ['Baratie, Whiskey Peak, Ark Maxim', 'Syrup Village, Twin Cape, Skypia', 'Loguetown, Jaya', 'Arlong Park, Arbana', 'Baratie, Alabasta', 'Syrup Village, Drum Island', 'Little Garden'];
