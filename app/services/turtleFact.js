@@ -11,7 +11,7 @@
 		var notif_time, notif_sound;
 		var notif_audio = new Audio('sounds/notification.mp3');
 		var version, jpn_monday;
-		var hotfix = false;
+		var hotfix = true;
 		var jpn_hotfix = false;
 
 		var services = {
@@ -47,8 +47,10 @@
 					if (moment().isAfter(end))
 						my_time.add(1, 'week');
 				}
-				else
-					my_time = moment.utc('2015-08-07 13:00');
+				// set hotfix time
+				else {
+					my_time = moment.utc('2015-09-21 13:00');
+				}
 			}
 			else {
 				if (!jpn_hotfix) {
@@ -75,15 +77,15 @@
 		}
 
 		function calc_ttimes_all() {
-			var num_weeks = 2;
+			var NUM_WEEKS = 5;
 			var i = 0;
 			var second_time = false;
 
 			// if jpn, double for twice a week and treat as num_days
 			if (version !== 'global')
-				num_weeks *= 2;
+				NUM_WEEKS *= 2;
 
-			while (i<num_weeks) {
+			while (i<NUM_WEEKS) {
 				ttimes.push(calc_ttime(i, second_time));
 				if (version === 'global'){
 					if (second_time)
@@ -115,11 +117,13 @@
 						ttime.add(1, 'week');
 
 				}
+
+				// set hotfix offsets
 				else {
 					day_num = week_num;
-					day_offset = [0,1,2,1,1];
+					day_offset = [1,2,1,2,1];
 
-					offset = week_num + 0;
+					offset = week_num + 2;
 
 					for (i=0; i<offset; i++)
 						weekly_order.unshift(weekly_order.pop());
