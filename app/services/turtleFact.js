@@ -86,7 +86,7 @@
 				if (!hotfix)
 					NUM_WEEKS *= 4;
 				else
-					NUM_WEEKS = 4;
+					NUM_WEEKS = 10;
 			}
 
 			while (i<NUM_WEEKS) {
@@ -125,7 +125,7 @@
 				// set hotfix offsets
 				else {
 					day_num = week_num;
-					day_offset = [1,2,1,2,1];
+					day_offset = [1,2,1,2,1,0,0,0,0,0];
 
 					offset = week_num + 2;
 
