@@ -185,11 +185,8 @@
 			var description = "One Piece Treasure Cruise Turtle Time";
 			var location = "OPTC";
 			var begin, end;
-			var target = ttimes[0].clone().add(1, 'weeks').subtract(4, 'hours');
 
-			for (var i=0; i<ttimes.length; i++) {
-			        if (ttimes[i].isAfter(target))
-				        break;
+			for (var i=0; i<2; i++) {
 				begin = ttimes[i].format();
 				end = ttimes[i].clone().add(30, 'minutes').format();
 				cal.addEvent(subject, description, location, begin, end);
