@@ -12,7 +12,7 @@
 		var notif_audio = new Audio('sounds/notification.mp3');
 		var version, jpn_monday;
 		var hotfix = true;
-		var jpn_hotfix = false;
+		var jpn_hotfix = true;
 
 		var services = {
 			set_id: set_id,
@@ -72,7 +72,7 @@
 					}
 				}
 				else 
-					my_time = moment.utc('2015-08-07 00:00');
+					my_time = moment.utc('2015-09-25 00:00');
 			}
 		}
 
@@ -82,8 +82,12 @@
 			var second_time = false;
 
 			// if jpn, double for twice a week and treat as num_days
-			if (version !== 'global')
-				NUM_WEEKS *= 2;
+			if (version !== 'global') {
+				if (!hotfix)
+					NUM_WEEKS *= 4;
+				else
+					NUM_WEEKS = 4;
+			}
 
 			while (i<NUM_WEEKS) {
 				ttimes.push(calc_ttime(i, second_time));
@@ -141,7 +145,7 @@
 				monday = jpn_monday;
 
 				if (!jpn_hotfix) {
-					offset = day_num + my_time.isoWeek()*2 + 3;
+					offset = day_num + my_time.isoWeek()*2 + 0;
 					if (!monday)
 						offset += 1;
 					offset = offset % 5;
@@ -157,9 +161,9 @@
 					}
 				}
 				else {
-					day_offset = [0,3,4,3,4,3];
+					day_offset = [1,10,10,10,10];
 
-					offset = day_num + 0;
+					offset = day_num + 4;
 
 					for (i=0; i<offset; i++)
 						weekly_order.unshift(weekly_order.pop());

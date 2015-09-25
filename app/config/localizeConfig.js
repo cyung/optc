@@ -37,7 +37,7 @@ angular.module('app')
 			TT_SEEMORE: 'siehe mehr',
 			TT_ADD_CALENDAR: 'Zum Kalender hinzufügen',
 			TT_NOTIFICATION: 'Mitteilungeinstellungen',
-			TT_NOTIF_MINUTES: 'Minuten vor der Veranstaltung',
+			TT_NOTIF_MINUTES: 'Minuten bis zur Veranstaltung',
 			TT_NOTIF_SOUND: 'Ton abspielen',
 			TT_NOTIF_EXAMPLE: 'Beispiel',
 			BB_TITLE: 'Barrel Breaking',

@@ -93,11 +93,12 @@
 							military="turtle.military"
 							index="$index"
 							numid="turtle.id"
-							ng-repeat="t in turtle.range(10) track by $index"
+							ng-repeat="t in turtle.range(4) track by $index"
 							locale="locale.locale"
 							version="turtle.version"
 							>
 						</turtle-beta>
+						<p ng-show="turtle.version !== 'global'">JPN: Fixed! Sorry for the inconvenience. The last two dates are incorrect and will be updated once I know the correct times.</p>
 					</div>
 					<div class="add-to-calendar" ng-show="!turtle.iOS">
 						<a class="btn btn-default" ng-click="turtle.get_cal()">
