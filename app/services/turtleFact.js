@@ -207,9 +207,10 @@
 				icon: 'favicon.ico'
 			};
 			var time_until;
+			var end = moment().add(3,'days');
 
 			for (var i=0; i<ttimes.length; i++) {
-				if (now.isAfter(ttimes[i]))
+				if (now.isAfter(ttimes[i]) || ttimes[i].isAfter(end))
 					continue;
 
 				time_until = ttimes[i].format('x') - now.format('x');
