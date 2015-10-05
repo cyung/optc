@@ -12,7 +12,7 @@
 		var notif_audio = new Audio('sounds/notification.mp3');
 		var version, jpn_monday;
 		var hotfix = false;
-		var jpn_hotfix = true;
+		var jpn_hotfix = false;
 
 		var services = {
 			set_id: set_id,
@@ -145,7 +145,7 @@
 				monday = jpn_monday;
 
 				if (!jpn_hotfix) {
-					offset = day_num + my_time.isoWeek()*2 + 0;
+					offset = day_num + my_time.isoWeek()*2 + 1;
 					if (!monday)
 						offset += 1;
 					offset = offset % 5;
