@@ -1,4 +1,4 @@
-# OPTC Calculator
-This is a calculator for the mobile game One Piece Treasure Cruise. More features will be added as they are requested. Shoot me a message on reddit if you want something else added.
+# OPTC Timer
+This is a timer for the mobile game One Piece Treasure Cruise.
 
 Changelog can be viewed [here](https://github.com/cyung/optc/commits/gh-pages).
