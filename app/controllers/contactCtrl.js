@@ -1,5 +1,7 @@
 angular.module('app')
 	.controller('ContactCtrl', function ($scope, $http, $log, promiseTracker, $timeout) {
+		var self = this;
+		
 		$scope.subjectListOptions = [
 			'Report a bug',
 			'Make a suggestion',
