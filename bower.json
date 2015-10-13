@@ -1,0 +1,18 @@
+{
+  "name": "optc",
+  "version": "0.0.0",
+  "homepage": "https://github.com/cyung/optc",
+  "authors": [
+    "Chris Yung <cyung10892@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "dependencies": {
+    "angular-material": "~0.11.3",
+    "angular-animate": "~1.4.7",
+    "angular-bootstrap": "~0.14.1",
+    "moment": "momentjs#~2.10.6"
+  }
+}
