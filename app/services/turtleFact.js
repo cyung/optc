@@ -11,7 +11,7 @@
 		var notif_time, notif_sound;
 		var notif_audio = new Audio('sounds/notification.mp3');
 		var version, jpn_monday;
-		var hotfix = false;
+		var hotfix = true;
 		var jpn_hotfix = false;
 
 		var services = {
@@ -49,7 +49,7 @@
 				}
 				// set hotfix time
 				else {
-					my_time = moment.utc('2015-09-21 13:00');
+					my_time = moment.utc('2015-11-10 13:00');
 				}
 			}
 			else {
@@ -127,7 +127,7 @@
 					day_num = week_num;
 					day_offset = [1,2,1,2,1,0,0,0,0,0];
 
-					offset = week_num + 2;
+					offset = week_num + 4;
 
 					for (i=0; i<offset; i++)
 						weekly_order.unshift(weekly_order.pop());
