@@ -125,7 +125,7 @@
 				// set hotfix offsets
 				else {
 					day_num = week_num;
-					day_offset = [1,2,1,2,1,0,0,0,0,0];
+					day_offset = [2,1,2,0,0,0,0,0,0,0];
 
 					offset = week_num + 4;
 
