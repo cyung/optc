@@ -71,6 +71,30 @@ angular.module('app')
 			BB_WOODEN: 'Madera',
 			BB_SILVER: 'Plata',
 			BB_GOLD: 'Oro'
+		})
+		.translations('fr', {
+			NAV_TURTLE: 'Horaires des Tortues',
+			NAV_BARREL: 'Partie d\'amis',
+			NAV_EVENT: 'Event',
+			NAV_CONTACT: 'Me Contacter',
+			NAV_SETTINGS: 'Réglages',
+			TT_TITLE: 'Calculateur de l\'Horaire des Tortues',
+			TT_DIGIT: '6eme chiffre ID:',
+			TT_FORMAT: 'Format 24h',
+			TT_TIMEZONE: 'Fuseau Horaire:',
+			TT_SEEMORE: 'Lire la suite',
+			TT_ADD_CALENDAR: 'Ajouter au Calendrier',
+			TT_NOTIFICATION: 'Réglages des Notifications',
+			TT_NOTIF_MINUTES: 'Temps Restant avant Event',
+			TT_NOTIF_SOUND: 'Jouer le son',
+			TT_NOTIF_EXAMPLE: 'Exemple',
+			BB_TITLE: 'Éclatement du Tonneau',
+			BB_TIME: 'Temps jusqu\'à la Prochaine Rotation:',
+			BB_ALT: 'Afficher les Heures',
+			BB_DATE: 'Date',
+			BB_WOODEN: 'Bois',
+			BB_SILVER: 'Argent',
+			BB_GOLD: 'Or',
 		});
 		$translateProvider.preferredLanguage('en');
 		$translateProvider.useSanitizeValueStrategy('escaped');

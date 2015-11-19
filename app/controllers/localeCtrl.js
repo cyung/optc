@@ -20,7 +20,7 @@ angular.module('app')
 		$scope.plsModel = {
 			languages: [
 				{id: 'en_US',title: 'English (US)',name: ' English (US)',flagImg: 'images/flags/us.png',flagTitle: 'United States'},
-				// {id: 'fr_FR',title: 'French (France)',name: ' Français (France)',flagImg: 'images/flags/fr.png',flagTitle: 'France'},
+				{id: 'fr_FR',title: 'French (France)',name: ' Français (France)',flagImg: 'images/flags/fr.png',flagTitle: 'France'},
 				// {id: 'it_IT',title: 'Italian',name: ' Italiano',flagImg: 'images/flags/it.png',flagTitle: 'Italy'},
 				{id: 'de_DE',title: 'German',name: ' Deutsch',flagImg: 'images/flags/de.png',flagTitle: 'Germany'},
 				{id: 'es_ES',title: 'Spanish',name: ' Español',flagImg: 'images/flags/es.png',flagTitle: 'Spain'},
