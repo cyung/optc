@@ -11,7 +11,7 @@
 		var notif_time, notif_sound;
 		var notif_audio = new Audio('sounds/notification.mp3');
 		var version, jpn_monday;
-		var hotfix = true;
+		var hotfix = false;
 		var jpn_hotfix = false;
 
 		var services = {
@@ -110,7 +110,7 @@
 
 			if (version === 'global') {
 					if (!hotfix) {
-					offset = week_num + my_time.isoWeek() + 2;
+					offset = week_num + my_time.isoWeek() + 1;
 
 					offset = offset % 5;
 
