@@ -145,7 +145,7 @@
 				monday = jpn_monday;
 
 				if (!jpn_hotfix) {
-					offset = day_num + my_time.isoWeek()*2 + 1;
+					offset = day_num + my_time.isoWeek()*2 + 2;
 					if (!monday)
 						offset += 1;
 					offset = offset % 5;
