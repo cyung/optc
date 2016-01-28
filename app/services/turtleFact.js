@@ -49,7 +49,7 @@
 				}
 				// set hotfix time
 				else {
-					my_time = moment.utc('2015-11-15 13:00');
+					my_time = moment.utc('2016-01-04 13:00');
 				}
 			}
 			else {
@@ -110,7 +110,7 @@
 
 			if (version === 'global') {
 					if (!hotfix) {
-					offset = week_num + my_time.isoWeek() + 1;
+					offset = week_num + my_time.isoWeek() + 3;
 
 					offset = offset % 5;
 
@@ -125,9 +125,9 @@
 				// set hotfix offsets
 				else {
 					day_num = week_num;
-					day_offset = [1,7,0,0,0,0,0,0,0,0];
+					day_offset = [2,1,2,7,0,0,0,0,0,0];
 
-					offset = week_num + 2;
+					offset = week_num + 1;
 
 					for (i=0; i<offset; i++)
 						weekly_order.unshift(weekly_order.pop());
@@ -145,7 +145,7 @@
 				monday = jpn_monday;
 
 				if (!jpn_hotfix) {
-					offset = day_num + my_time.isoWeek()*2 + 1;
+					offset = day_num + my_time.isoWeek()*2 + 2;
 					if (!monday)
 						offset += 1;
 					offset = offset % 5;
