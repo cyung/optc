@@ -5,3 +5,5 @@ css/main.css.map
 process.php
 composer.json
 composer.lock
+.DS_Store
+.sass-cache/
